@@ -17,9 +17,31 @@
     <script src="./app.js" defer></script>
 </head>
 <body>
-    <form>
-        <input type="text">
-        <input type="submit" value="Search">
-    </form>
+    <main>
+        <section class="search-wrapper">
+            <h1>
+                Our World
+            </h1>
+            <form>
+                <input type="text">
+                <input type="submit" hidden>
+            </form>
+        </section>
+        <section class="recent-wrapper">
+            <h2>Recent searches:</h2>
+            <ul class="recent-list">
+                <li>
+                    <article>
+                        <img src="https://flagcdn.com/pe.svg" class="buh" width="100%">
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <img src="https://flagcdn.com/se.svg" class="buh" width="100%">
+                    </article>
+                </li>
+            </ul>
+        </section>
+    </main>
 </body>
 </html>
