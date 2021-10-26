@@ -123,6 +123,27 @@ main {
     font-weight: 500;
 }
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #333D79;
+        color: #FAEBEF;
+    }
+
+    .search-bar {
+        background-color: #5C6494;
+        color: #C8BCBF;
+    }
+
+    .search-bar:active,
+    .search-bar:focus {
+        outline: 2px solid #C8BCBF;
+    }
+
+    .recent-list a {
+        color: #FAEBEF;
+    }
+
+    .recent-search:hover {
         background-color: #475086;
     }
 
