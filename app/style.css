@@ -13,6 +13,8 @@
 body {
     display: flex;
     min-height: 100vh;
+    background-color: #FAEBEF;
+    color: #333D79;
 }
 
 main {
@@ -23,13 +25,55 @@ main {
     text-align: center;
 }
 
-.recent-wrapper {
-    width: 50vw;
+.identity-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 35vw;
     margin: auto;
 }
 
-.recent-wrapper > h2 {
-    padding-block: 2%;
+.identity-wrapper>img {
+    height: 90px;
+    aspect-ratio: 1/1;
+}
+
+.identity-wrapper>h1 {
+    font-size: 50px;
+    padding-left: 2.5%;
+}
+
+.search-bar {
+    margin-block: 7.5%;
+    width: 35vw;
+    height: 45px;
+    font-size: 100%;
+    padding-inline: 1.5%;
+    border-radius: 7px;
+    background-color: #C8BCBF;
+    border: none;
+    color: #293161;
+    font-weight: 500;
+}
+
+.search-bar::placeholder {
+    opacity: 0.8;
+}
+
+.search-bar:active,
+.search-bar:focus {
+    outline: 2px solid #293161;
+}
+
+.recent-wrapper {
+    width: 45vw;
+    margin: auto;
+}
+
+.recent-wrapper>h2 {
+    padding-bottom: 2%;
+    font-size: 1.5em;
 }
 
 .recent-list {
@@ -39,10 +83,15 @@ main {
     justify-content: flex-start;
 }
 
-.recent-list > li {
+.recent-list>li {
     flex-grow: 1;
     max-width: 16%;
     margin-inline: 2%;
+}
+
+.recent-list a {
+    text-decoration: none;
+    color: #333D79
 }
 
 .recent-search {
@@ -54,12 +103,13 @@ main {
     border-radius: 10px;
     transition: background-color 250ms;
 }
+
 .recent-search:hover {
-    background-color: green;
+    background-color: #E1D4D7;
 }
 
 .img-wrapper {
-    background-color: yellow;
+    background-color: #C8BCBF;
     display: flex;
     justify-content: center;
     width: 80%;
@@ -70,4 +120,13 @@ main {
 
 .recent-search-name {
     padding-block: 10%;
+    font-weight: 500;
+}
+
+        background-color: #475086;
+    }
+
+    .img-wrapper {
+        background-color: #5C6494;
+    }
 }
