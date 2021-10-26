@@ -7,7 +7,7 @@ Designed by [Dalton Maag](https://fonts.google.com/?query=Dalton+Maag)
 
 ## Icon
 ### Earth
-![](app/images/earth.svg) </br>
+![](app/images/earth-black-white.svg) </br>
 Designed by [Gregsuj](https://thenounproject.com/GregSuj/)
 
 ## Colors 
