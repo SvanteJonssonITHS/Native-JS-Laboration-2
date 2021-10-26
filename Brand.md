@@ -2,7 +2,7 @@
 
 ## Font
 ### Ubuntu
-![](app/images/wordmark.svg) </br>
+![](app/images/font.svg) </br>
 Designed by [Dalton Maag](https://fonts.google.com/?query=Dalton+Maag)
 
 ## Icon
