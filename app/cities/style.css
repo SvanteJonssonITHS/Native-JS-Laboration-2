@@ -10,7 +10,31 @@
     scroll-behavior: smooth;
 }
 
-form > *:not(label) {
+form>*:not(label) {
     display: block;
     margin-bottom: 20px;
+}
+
+.card {
+    background-color: red;
+    max-width: 20%;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-wrapper>h3 {
+    padding-bottom: 0.5em;
+}
+
+.actions-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.actions-wrapper>button {
+    display: grid;
+    place-content: center;
+    margin-left: 0.5em;
 }
