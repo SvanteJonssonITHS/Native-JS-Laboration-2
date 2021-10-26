@@ -5,10 +5,6 @@
             fill: #fff !important;
             stroke: #fff !important;
         }
-        html[data-color-mode="dark"] g {
-            fill: #fff !important;
-            stroke: #fff !important;
-        }
         }
     </style>
     <g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#000" stroke-width="0.25mm"
