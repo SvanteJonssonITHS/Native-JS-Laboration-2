@@ -19,11 +19,12 @@
 <body>
     <main>
         <section class="search-wrapper">
-            <h1>
-                Our World
-            </h1>
+            <div class="identity-wrapper">
+                <img src="./images/earth.svg" alt="Logo">
+                <h1>EveryCountries</h1>
+            </div>
             <form>
-                <input type="text">
+                <input type="text" class="search-bar" placeholder="Search for a country">
                 <input type="submit" hidden>
             </form>
         </section>
@@ -31,12 +32,14 @@
             <h2>Recent searches:</h2>
             <ul class="recent-list">
                 <li>
-                    <article class="recent-search">
-                        <div class="img-wrapper">
-                            <img src="https://flagcdn.com/w320/pe.png" width="100%">
-                        </div>
-                        <p class="recent-search-name">Peru</p>
-                    </article>
+                    <a href="">
+                        <article class="recent-search">
+                            <div class="img-wrapper">
+                                <img src="https://flagcdn.com/w320/pe.png" width="100%">
+                            </div>
+                            <p class="recent-search-name">Peru</p>
+                        </article>
+                    </a>
                 </li>
             </ul>
         </section>
