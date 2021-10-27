@@ -1,4 +1,6 @@
 let citiesContainer = document.querySelector('#cities-container')
+let form = document.querySelector('form')
+let cities = []
 
 getCities = async () => {
     const response = await fetch('https://avancera.app/cities/')
@@ -7,8 +9,9 @@ getCities = async () => {
 }
 }
 
-renderCities = (cities) => {
-    cities.forEach(city => createCityCard(city))
+renderCities = (results) => {
+    citiesContainer.innerHTML = '';
+    results.forEach(city => createCityCard(city))
 }
 
 createCityCard = (city) => {
@@ -46,7 +49,26 @@ createCityCard = (city) => {
     card.setAttribute('class', 'card')
 
     card.append(infoWrapper, actionsWrapper)
-    
+
     //Card is added to DOM
     citiesContainer.appendChild(card)
+}
+
+addCity = async (name, population) => {
+    const city = {
+        "name": name,
+        "population": parseInt(population)
+    }
+
+    const response = await fetch('https://avancera.app/cities/', {
+        body: JSON.stringify(city),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'POST'
+    })
+    const result = await response.json()
+    return result
+}
+
 }
