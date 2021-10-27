@@ -71,4 +71,21 @@ addCity = async (name, population) => {
     return result
 }
 
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    let name = e.target.name.value
+    let population = e.target.population.value
+    if (name && population) {
+        let cityExists = cities.findIndex(c => c.name === name)
+        if (cityExists == -1) cities = await addCity(name, population)
+    }
+    if (cities) renderCities(cities)
+})
+
+editCity = () => {
+    //TODO
+}
+
+deleteCity = () => {
+    //TODO
 }
