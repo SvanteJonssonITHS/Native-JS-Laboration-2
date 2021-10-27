@@ -24,7 +24,7 @@ createCityCard = (city) => {
     name.textContent = city.name
 
     let population = document.createElement('p')
-    population.textContent = `Folkmängd: ${city.population}`
+    population.textContent = `Folkmängd: ${Intl.NumberFormat().format(city.population)}`
 
     infoWrapper.append(name, population)
 
