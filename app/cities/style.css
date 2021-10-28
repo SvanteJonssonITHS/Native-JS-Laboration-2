@@ -10,7 +10,7 @@
     scroll-behavior: smooth;
 }
 
-form>*:not(label) {
+#add-form>*:not(label) {
     display: block;
     margin-bottom: 20px;
 }
@@ -55,4 +55,59 @@ form>*:not(label) {
     display: grid;
     place-content: center;
     margin-left: 0.5em;
+}
+
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: grid;
+    place-content: center;
+}
+
+[hidden] { /* Using display: grid; overrides the hidden attribute */
+    display: none;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    width: 40vw;
+    padding: 1em;
+}
+
+.modal-content > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 1em;
+}
+
+.modal-content > header > button {
+    display: grid;
+    place-content: center;
+}
+
+.modal-content > main {
+    padding-block: 1em;
+}
+
+#edit-form>*:not(label, [type=submit]) {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.delete-warning {
+    text-align: center;
+}
+
+.modal-content > footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
