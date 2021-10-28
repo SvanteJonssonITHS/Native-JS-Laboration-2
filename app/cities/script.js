@@ -1,6 +1,7 @@
 let citiesContainer = document.querySelector('#cities-container')
 let form = document.querySelector('form')
 let cities = []
+let cancelBtns = document.querySelectorAll('.cancel-button')
 
 getCities = async () => {
     const response = await fetch('https://avancera.app/cities/')
@@ -35,12 +36,12 @@ createCityCard = (city) => {
     let edit = document.createElement('button')
     edit.title = 'Redigera'
     edit.innerHTML = '<span class="material-icons">edit</span>'
-    edit.onclick = `editCity(${city.id})` //TODO
+    edit.onclick = () => openModal('edit', city.id) //TODO
 
     let remove = document.createElement('button')
     remove.title = 'Radera'
     remove.innerHTML = '<span class="material-icons">delete</span>'
-    remove.onclick = `removeCity(${city.id})` //TODO
+    remove.onclick = () => openModal('delete', city.id) //TODO
 
     actionsWrapper.append(edit, remove)
 
@@ -82,10 +83,46 @@ form.addEventListener('submit', async (e) => {
     if (cities) renderCities(cities)
 })
 
-editCity = () => {
+
+
+editCity = (id) => {
+    console.log(id)
     //TODO
 }
 
-deleteCity = () => {
+deleteCity = (id) => {
+    console.log(id)
     //TODO
+}
+
+openModal = (type, city) => {
+    let modal = document.querySelector('.modal')
+    let title = document.querySelector('#modal-title')
+    let modalContent
+    switch (type) {
+        case 'edit':
+            console.log('edit', city)
+            title.textContent = 'Redigera Stad'
+            modalContent = document.querySelectorAll('.edit-modal')
+        break;
+        case 'delete':
+            console.log('delete', city)
+            title.textContent = 'Radera Stad'
+            modalContent = document.querySelectorAll('.delete-modal')
+            console.log(modalContent)
+        break;
+    }
+
+    if(modalContent) {
+        modalContent.forEach(e => e.hidden = false)
+        modal.hidden = false
+    }
+}
+
+closeModal = () => {
+    let modal = document.querySelector('.modal')
+    modal.hidden = true
+
+    let modalContent = document.querySelectorAll('.edit-modal, .delete-modal')
+    modalContent.forEach(element => element.hidden = true)
 }
