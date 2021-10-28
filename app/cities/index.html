@@ -17,7 +17,7 @@
 </head>
 <body>
     <section>
-        <form>
+        <form id="add-form">
             <h2>Lägg till en stad</h2>
             <label for="name">Namn</label>
             <input type="text" id="name">
@@ -46,5 +46,48 @@
             </div>
         </div>
     </section>
+    <div class="modal" hidden>
+        <div class="modal-content">
+            <header>
+                <h2 id="modal-title">
+                    Title
+                </h2>
+                <button class="cancel-button">
+                    <span class="material-icons">
+                        close
+                    </span>
+                </button>
+            </header>
+            <main>
+                <span class="edit-modal" hidden>
+                    <form id="edit-form">
+                        <label for="name">Namn</label>
+                        <input type="text" id="edit-name">
+                        <label for="population">Folkmängd</label>
+                        <input type="number" id="edit-population">
+                        <input type="submit" hidden>
+                    </form>
+                </span>
+                <span class="delete-modal" hidden>
+                    <p id="delete-warning">Är du säker på att du vill ta bort den här staden? Denna åtgärd är permanent och kan inte ångras!</p>
+                </span>
+            </main>
+            <footer>
+                <button class="cancel-button">
+                    Cancel
+                </button>
+                <span class="edit-modal" hidden>
+                    <button>
+                        Update
+                    </button>
+                </span>
+                <span class="delete-modal" hidden>
+                    <button>
+                        Delete
+                    </button>
+                </span>
+            </footer>
+        </div>
+    </div>
 </body>
 </html>
