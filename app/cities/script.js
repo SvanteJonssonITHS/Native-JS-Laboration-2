@@ -8,6 +8,7 @@ let deleteBtn = document.querySelector('.delete-modal>button')
 
 getCities = async () => {
     const response = await fetch('https://avancera.app/cities/')
+    console.info(`${getTime()} | %cGET request%c for all cities ended with status %c${response.status}`, 'color: blue', '', 'color: purple')
     const result = await response.json()
     return result
 }
@@ -51,6 +52,7 @@ getTime = () => {
 renderCities = (results) => {
     citiesContainer.innerHTML = '';
     results.forEach(city => createCityCard(city))
+    console.info(`${getTime()} | All cities have been updated`)
 }
 
 createCityCard = (city) => {
@@ -86,7 +88,6 @@ createCityCard = (city) => {
     //City card
     let card = document.createElement('div')
     card.setAttribute('class', 'card')
-
     card.append(infoWrapper, actionsWrapper)
 
     //Card is added to DOM
@@ -106,6 +107,7 @@ addCity = async (name, population) => {
         },
         method: 'POST'
     })
+    console.info(`${getTime()} | %cPOST request%c for city %c${name}%c ended with status %c${response.status}`, 'color: green', '', 'color: brown', '', 'color: purple')
     const result = await response.json()
     return result
 }
