@@ -115,9 +115,15 @@ editCity = async (id) => {
     closeModal()
 }
 
-deleteCity = (id) => {
-    console.log(id)
-    //TODO
+deleteCity = async (id) => {
+    let response = await fetch(`https://avancera.app/cities/${id}`, {method: 'DELETE'})
+    console.info(`${getTime()} | %cDELETE request%c for city %c${id}%c ended with status %c${response.status}`, 'color: red', '', 'color: brown', '', 'color: purple')
+    let cities = await getCities()
+    if(cities) {
+        console.info(`${getTime()} | Updating cities...`)
+        renderCities(cities)
+    }
+    closeModal()
 }
 
 openModal = (type, city) => {
