@@ -8,6 +8,14 @@ getCities = async () => {
     const result = await response.json()
     return result
 }
+
+getCity = async (id) => {
+    const response = await fetch(`https://avancera.app/cities/${id}`)
+    console.info(`${getTime()} | %cGET request%c for city %c${id}%c ended with status %c${response.status}`, 'color: blue', '', 'color: brown', '', 'color: purple')
+    const result = await response.json()
+    return result
+}
+
 getTime = () => {
     const d = new Date()
     let time = ''
