@@ -8,6 +8,13 @@ getCities = async () => {
     const result = await response.json()
     return result
 }
+getTime = () => {
+    const d = new Date()
+    let time = ''
+    time += d.getHours().toString().length == 1 ? (0 + d.getHours().toString() + ':') : d.getHours() + ':'
+    time += d.getMinutes().toString().length == 1 ? (0 + d.getMinutes().toString() + ':') : d.getMinutes() + ':'
+    time += d.getSeconds().toString().length == 1 ? (0 + d.getSeconds().toString()) : d.getSeconds()
+    return time
 }
 
 renderCities = (results) => {
