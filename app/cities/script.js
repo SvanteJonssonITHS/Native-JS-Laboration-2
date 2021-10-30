@@ -126,25 +126,33 @@ deleteCity = async (id) => {
     closeModal()
 }
 
-openModal = (type, city) => {
+openModal = async (type, id) => {
     let modal = document.querySelector('.modal')
     let title = document.querySelector('#modal-title')
     let modalContent
     switch (type) {
         case 'edit':
-            console.log('edit', city)
             title.textContent = 'Redigera Stad'
             modalContent = document.querySelectorAll('.edit-modal')
-        break;
+
+            let city = await getCity(id)
+
+            let name = document.querySelectorAll('#edit-name')[0]
+            name.value = `${city.name}`
+
+            let population = document.querySelectorAll('#edit-population')[0]
+            population.value = `${city.population}`
+
+            editBtn.onclick = () => editCity(id)
+            break;
         case 'delete':
-            console.log('delete', city)
             title.textContent = 'Radera Stad'
             modalContent = document.querySelectorAll('.delete-modal')
-            console.log(modalContent)
-        break;
+            deleteBtn.onclick = () => deleteCity(id)
+            break;
     }
 
-    if(modalContent) {
+    if (modalContent) {
         modalContent.forEach(e => e.hidden = false)
         modal.hidden = false
     }
