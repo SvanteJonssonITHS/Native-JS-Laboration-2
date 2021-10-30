@@ -19,9 +19,9 @@
     <section>
         <form id="add-form" autocomplete="off">
             <h2>Lägg till en stad</h2>
-            <label for="name">Namn</label>
+            <label for="name"><span class="required-icon">*</span>Namn</label>
             <input type="text" id="name">
-            <label for="population">Folkmängd</label>
+            <label for="population"><span class="required-icon">*</span>Folkmängd</label>
             <input type="number" id="population">
             <input type="submit" value="Lägg till">
         </form>
@@ -61,9 +61,9 @@
             <main>
                 <span class="edit-modal" hidden>
                     <form id="edit-form" autocomplete="off">
-                        <label for="name">Namn</label>
+                        <label for="name"><span class="required-icon">*</span>Namn</label>
                         <input type="text" id="edit-name">
-                        <label for="population">Folkmängd</label>
+                        <label for="population"><span class="required-icon">*</span>Folkmängd</label>
                         <input type="number" id="edit-population">
                     </form>
                 </span>
