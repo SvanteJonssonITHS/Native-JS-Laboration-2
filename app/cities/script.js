@@ -90,11 +90,29 @@ form.addEventListener('submit', async (e) => {
     if (cities) renderCities(cities)
 })
 
+editCity = async (id) => {
+    let name = document.querySelectorAll('#edit-name')[0]
+    let population = document.querySelectorAll('#edit-population')[0]
+    let city = {
+        "id": id,
+        "name": name.value, 
+        "population": parseInt(population.value)
+    }
 
-
-editCity = (id) => {
-    console.log(id)
-    //TODO
+    let response = await fetch(`https://avancera.app/cities/${id}`, {
+        body: JSON.stringify(city),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'PATCH'
+    })
+    console.info(`${getTime()} | %cPATCH request%c for city %c${name.value}%c ended with status %c${response.status}`, 'color: green', '', 'color: brown', '', 'color: purple')
+    let cities = await getCities()
+    if(cities) {
+        console.info(`${getTime()} | Updating cities...`)
+        renderCities(cities)
+    }
+    closeModal()
 }
 
 deleteCity = (id) => {
