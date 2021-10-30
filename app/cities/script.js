@@ -19,6 +19,8 @@ window.onload = async () => {
             console.info(`${getTime()} | Updating cities...`)
             _cities = result
             renderCities(_cities)
+        } else {
+            console.info(`${getTime()} | No changes detected`)
         }
     }, 60000)
 
@@ -132,10 +134,10 @@ editCity = async (id) => {
         method: 'PATCH'
     })
     console.info(`${getTime()} | %cPATCH request%c for city %c${name.value}%c ended with status %c${response.status}`, 'color: green', '', 'color: brown', '', 'color: purple')
-    let cities = await getCities()
-    if (cities) {
+    _cities = await getCities()
+    if (_cities) {
         console.info(`${getTime()} | Updating cities...`)
-        renderCities(cities)
+        renderCities(_cities)
     }
     closeModal()
 }
@@ -145,10 +147,10 @@ deleteCity = async (id) => {
         method: 'DELETE'
     })
     console.info(`${getTime()} | %cDELETE request%c for city %c${id}%c ended with status %c${response.status}`, 'color: red', '', 'color: brown', '', 'color: purple')
-    let cities = await getCities()
-    if (cities) {
+    _cities = await getCities()
+    if (_cities) {
         console.info(`${getTime()} | Updating cities...`)
-        renderCities(cities)
+        renderCities(_cities)
     }
     closeModal()
 }
