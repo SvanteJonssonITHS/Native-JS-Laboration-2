@@ -1,6 +1,7 @@
 let citiesContainer = document.querySelector('#cities-container')
-let form = document.querySelector('form')
-let cities = []
+let addForm = document.querySelector('#add-form')
+let editForm = document.querySelector('#edit-form')
+let _cities = []
 let cancelBtns = document.querySelectorAll('.cancel-button')
 
 getCities = async () => {
@@ -87,15 +88,18 @@ addCity = async (name, population) => {
     return result
 }
 
-form.addEventListener('submit', async (e) => {
+addForm.addEventListener('submit', async (e) => { //TODO, onchange på input fälten så att knappen blir disabled, lägg även till felmeddelande
     e.preventDefault();
     let name = e.target.name.value
     let population = e.target.population.value
     if (name && population) {
-        let cityExists = cities.findIndex(c => c.name === name)
-        if (cityExists == -1) cities = await addCity(name, population)
+        let cityExists = _cities.findIndex(c => c.name === name)
+        if (cityExists == -1) _cities = await addCity(name, population)
     }
-    if (cities) renderCities(cities)
+    if (_cities){
+        console.info(`${getTime()} | Updating cities...`)
+        renderCities(_cities)
+    } 
 })
 
 editCity = async (id) => {
