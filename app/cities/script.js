@@ -17,6 +17,25 @@ getCity = async (id) => {
     return result
 }
 
+window.onload = async () => {
+    //Inital GET
+    let _cities = await getCities()
+    if(_cities) {
+        console.info(`${getTime()} | Cities have been retrieved`)
+        renderCities(_cities)
+    }
+
+    setInterval( async () => {
+        let result = await getCities()
+        if(JSON.stringify(_cities) != JSON.stringify(result)) {
+            console.info(`${getTime()} | Updating cities...`)
+            _cities = result
+            renderCities(_cities)
+        }
+    }, 60000) //Check once every minute if   
+    
+}
+
 getTime = () => {
     const d = new Date()
     let time = ''
