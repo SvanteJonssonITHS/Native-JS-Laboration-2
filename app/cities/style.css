@@ -115,3 +115,11 @@
 .required-icon {
     color: #f00;
 }
+
+input {
+    outline: none;
+}
+
+.invalid-input {
+    outline: 1px solid red;
+}

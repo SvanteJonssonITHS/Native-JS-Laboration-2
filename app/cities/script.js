@@ -1,12 +1,16 @@
 let citiesContainer = document.querySelector('#cities-container')
 let addForm = document.querySelector('#add-form')
+let addFields = document.querySelectorAll('#add-form>input[id^=add-]')
 let editForm = document.querySelector('#edit-form')
+let editFields = document.querySelectorAll('#edit-form>input[id^=edit-]')
 let _cities = []
 let cancelBtns = document.querySelectorAll('.cancel-button')
+let addBtn = document.querySelector('#add-form>input[type=submit]')
 let editBtn = document.querySelector('.edit-modal>button')
 let deleteBtn = document.querySelector('.delete-modal>button')
 
 window.onload = async () => {
+    errorCheck('add')
     //Inital GET
     let _cities = await getCities()
     if (_cities) {
@@ -24,6 +28,8 @@ window.onload = async () => {
         }
     }, 60000)
 
+    addFields.forEach(field => field.oninput = () => errorCheck('add'))
+    editFields.forEach(field => field.oninput = () => errorCheck('edit'))
     cancelBtns.forEach(btn => btn.onclick = () => closeModal())
 }
 
@@ -157,8 +163,8 @@ deleteCity = async (id) => {
 
 addForm.addEventListener('submit', async (e) => { //TODO, onchange på input fälten så att knappen blir disabled, lägg även till felmeddelande
     e.preventDefault();
-    let name = e.target.name.value
-    let population = e.target.population.value
+    let name = e.target['add-name'].value
+    let population = e.target['add-population'].value
     if (name && population) {
         let cityExists = _cities.findIndex(c => c.name === name)
         if (cityExists == -1) _cities = await addCity(name, population)
@@ -186,6 +192,8 @@ openModal = async (type, id) => {
             let population = document.querySelectorAll('#edit-population')[0]
             population.value = `${city.population}`
 
+            errorCheck('edit')
+
             editBtn.onclick = () => editCity(id)
             break;
         case 'delete':
@@ -205,4 +213,36 @@ closeModal = () => {
     modal.hidden = true
     let modalContent = document.querySelectorAll('.edit-modal, .delete-modal')
     modalContent.forEach(element => element.hidden = true)
+}
+
+errorCheck = (type) => {
+    let name, population, button
+    switch (type) {
+        case 'add':
+            name = addFields[0]
+            population = addFields[1]
+            button = addBtn
+        break;
+        case 'edit':
+            name = editFields[0]
+            population = editFields[1]
+            button = editBtn
+        break;
+    }
+    let nameValid = (name.value.length > 0)
+    let populationValid = (population.value.toString().length > 0 && !isNaN(population.value))
+
+    if (nameValid) { //Name field is valid
+        name.classList.remove('invalid-input')
+    } else { //Name field is not valid
+        name.classList.add('invalid-input')
+    }
+
+    if (populationValid) { //Population field is valid
+        population.classList.remove('invalid-input')
+    } else { //Population field is not valid
+        population.classList.add('invalid-input')
+    }
+
+    button.disabled = (nameValid && populationValid) ? false : true
 }
