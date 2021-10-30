@@ -3,6 +3,8 @@ let addForm = document.querySelector('#add-form')
 let editForm = document.querySelector('#edit-form')
 let _cities = []
 let cancelBtns = document.querySelectorAll('.cancel-button')
+let editBtn = document.querySelector('.edit-modal>button')
+let deleteBtn = document.querySelector('.delete-modal>button')
 
 getCities = async () => {
     const response = await fetch('https://avancera.app/cities/')
@@ -34,6 +36,7 @@ window.onload = async () => {
         }
     }, 60000) //Check once every minute if   
     
+    cancelBtns.forEach(btn => btn.onclick = () => closeModal())
 }
 
 getTime = () => {
