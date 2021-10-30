@@ -17,7 +17,7 @@
 </head>
 <body>
     <section>
-        <form id="add-form">
+        <form id="add-form" autocomplete="off">
             <h2>Lägg till en stad</h2>
             <label for="name">Namn</label>
             <input type="text" id="name">
@@ -60,12 +60,11 @@
             </header>
             <main>
                 <span class="edit-modal" hidden>
-                    <form id="edit-form">
+                    <form id="edit-form" autocomplete="off">
                         <label for="name">Namn</label>
                         <input type="text" id="edit-name">
                         <label for="population">Folkmängd</label>
                         <input type="number" id="edit-population">
-                        <input type="submit" hidden>
                     </form>
                 </span>
                 <span class="delete-modal" hidden>
