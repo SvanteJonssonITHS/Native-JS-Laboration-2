@@ -34,3 +34,8 @@ getAllCountryNames = async () => {
     let response = await fetch('https://restcountries.com/v2/all?fields=name')
     return await response.json()
 }
+
+openPredictionList = (element) => {
+    element.hidden = false
+}
+}
