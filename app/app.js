@@ -45,3 +45,16 @@ closePredictionList = (element) => {
     element.hidden = true
     _activePrediction = -1
 }
+
+createPrediction = (prediction, query) => {
+    let element = document.createElement('div')
+    element.setAttribute('class', 'prediction')
+    element.innerHTML = "<strong>" + prediction.substr(0, query.length) + "</strong>"
+    element.innerHTML += prediction.substr(query.length)
+    element.innerHTML += "<input type='hidden' value='" + prediction + "'>"
+    element.addEventListener('click', () => {
+        _input.value = document.querySelector('.active-prediction>input').value
+        //TODO | kör den riktiga submitten
+    })
+    return element
+}
