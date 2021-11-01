@@ -10,26 +10,120 @@
     scroll-behavior: smooth;
 }
 
+body {
+    display: flex;
+    position: relative;
+}
+
+body>section:first-of-type {
+    position: fixed;
+    width: 20%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid #ccc;
+}
+
+#return-btn {
+    white-space: nowrap;
+    height: min-content;
+    padding: 0.5em;
+    text-decoration: none;
+    margin: 0.5em;
+    z-index: 1;
+    position: absolute;
+}
+
+body>section:last-of-type {
+    width: 80%;
+    margin-left: 20%;
+    position: relative;
+    z-index: 1;
+}
+
+#add-form {
+    padding: 4em 2em;
+    width: 100%;
+}
+
 #add-form>*:not(label) {
     display: block;
     margin-bottom: 20px;
+}
+
+#add-form>label {
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+#add-form>input[type=submit] {
+    margin-left: auto;
+}
+
+.input-base {
+    width: 100%;
+    height: 30px;
+    font-size: 100%;
+    padding-left: 0.5em;
+    border-radius: 4px;
+    border: none;
+    outline: 2px solid #ccc;
+}
+
+.primary-btn {
+    border: none;
+    padding: 1em 1.5em;
+    border-radius: 4px;
+    font-weight: 400;
+    color: #FFFFFF;
+    background-color: #3369ff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.secondary-btn {
+    padding: 1em 1.5em;
+    border-radius: 4px;
+    font-weight: 400;
+    border: 1px solid #3369ff;
+    color: #3369ff;
+    background-color: #FFF;
+    text-align: center;
+    cursor: pointer;
+}
+
+.primary-btn:active,
+.secondary-btn:active {
+    transform: scale(95%);
+}
+
+.primary-btn:disabled,
+.secondary-btn:disabled {
+    filter: grayscale(100%);
+    transform: scale(100%);
 }
 
 #cities-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .card {
-    flex: 1 1 400px;
-    background-color: red;
-    max-width: 20%;
-    padding: 1em;
-    margin: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 2px solid #ccc;
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
+
+    flex: 1 1 20%;
+    min-width: 350px;
+    max-width: 350px;
+    height: max-content;
+    border-radius: 4px;
+    padding: 1em;
+    margin: 1em 0.5em;
 }
 
 .info-wrapper {
@@ -45,8 +139,6 @@
 }
 
 .actions-wrapper {
-    width: 20%;
-    margin-left: 10%;
     display: flex;
     flex-direction: row;
 }
@@ -54,7 +146,8 @@
 .actions-wrapper>button {
     display: grid;
     place-content: center;
-    margin-left: 0.5em;
+    padding: 0.5em;
+    margin: 0.1em;
 }
 
 
@@ -70,7 +163,8 @@
     place-content: center;
 }
 
-[hidden] { /* Using display: grid; overrides the hidden attribute */
+[hidden] {
+    /* Using display: grid; overrides the hidden attribute */
     display: none;
 }
 
@@ -80,7 +174,7 @@
     padding: 1em;
 }
 
-.modal-content > header {
+.modal-content>header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -88,12 +182,14 @@
     padding-bottom: 1em;
 }
 
-.modal-content > header > button {
+.modal-content>header>button {
     display: grid;
     place-content: center;
+    border: none;
+    padding: 0;
 }
 
-.modal-content > main {
+.modal-content>main {
     padding-block: 1em;
 }
 
@@ -102,24 +198,67 @@
     margin-bottom: 20px;
 }
 
+#edit-form>label {
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
 .delete-warning {
     text-align: center;
 }
 
-.modal-content > footer {
+.modal-content>footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.required-icon {
-    color: #f00;
-}
-
-input {
-    outline: none;
+.modal-content>footer>button:first-of-type {
+    margin-right: 1em;
 }
 
 .invalid-input {
-    outline: 1px solid red;
+    outline: 2px solid #f00 !important;
 }
+
+.required-icon, .fail {
+    color: #f00;
+}
+
+.success {
+    color: #008a00;
+}
+
+@media only screen and (max-width: 950px) {
+    body {
+        display: initial;
+    }
+    
+    body>section:first-of-type {
+        position: initial;
+        width: 100%;
+        height: auto;
+        border-right: none;
+    }
+
+    #add-form {
+        padding-bottom: 1em;
+    }
+    
+    body>section:last-of-type {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #cities-container {
+        justify-content: center;
+    }
+
+    .card {
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        width: 90vw;
+    }
+  }
