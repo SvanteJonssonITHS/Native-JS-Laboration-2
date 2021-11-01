@@ -127,10 +127,30 @@ handleSubmit = () => {
 }
 
 searchCountry = () => {
-    _allCountries.forEach(country => {
+    let name 
+    for (let i = 0; i < _allCountries.length; i++) {
+        const country = _allCountries[i];
         if(_query.value == country.common || _query.value == country.alt){
-            const name = country.common.replaceAll(' ', '-')
-            window.location = `./country?name=${name}`
+            name = country.common
+            break
         }
-    });
+    }
+    if(!name) return false //TODO | add message about faulty query
+    let recent = []
+    if(localStorage.getItem('recent')) {
+        recent = JSON.parse(localStorage.getItem('recent'))
+        let index = recent.findIndex((e) => e == name)
+        recent.unshift(name)
+        
+        if(index != -1) {
+            recent.splice(index+1, 1)
+        }
+        if(recent.length > 5) {
+            recent.pop()
+        }
+    } else {
+        recent = [name]
+    }
+    localStorage.setItem('recent', JSON.stringify(recent))
+    window.location = `./country?name=${name.replaceAll(' ', '-')}`
 }
