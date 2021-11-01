@@ -2,6 +2,7 @@ let _form = document.querySelector("form")
 let _query = document.querySelector("input[type=text]")
 let _allCountries = []
 let _predictionList = document.querySelector('#predictions-wrapper')
+let _activePrediction = -1
 
 window.onload = async () => {
     validQuery()
@@ -38,4 +39,9 @@ getAllCountryNames = async () => {
 openPredictionList = (element) => {
     element.hidden = false
 }
+
+closePredictionList = (element) => {
+    element.innerHTML = ''
+    element.hidden = true
+    _activePrediction = -1
 }
