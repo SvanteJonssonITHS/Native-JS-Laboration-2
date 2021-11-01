@@ -118,8 +118,18 @@ document.addEventListener('click', function (e) {
 
 handleSubmit = () => {
     if (_activePrediction == -1) {
-        return false //TODO | kör den riktiga submitten
+        searchCountry()
+    } else {
+        let prediciton = document.querySelector('.active-prediction')
+        prediciton.click()
     }
-    let prediciton = document.querySelector('.active-prediction')
-    prediciton.click()
+}
+
+searchCountry = () => {
+    _allCountries.forEach(country => {
+        if(_query.value == country.common || _query.value == country.alt){
+            const name = country.common.replaceAll(' ', '-')
+            window.location = `./country?name=${name}`
+        }
+    });
 }
