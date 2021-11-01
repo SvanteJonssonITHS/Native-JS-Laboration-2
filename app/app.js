@@ -2,10 +2,13 @@ let form = document.querySelector("form")
 let query = document.querySelector("input[type=text]")
 let submit = document.querySelector("input[type=submit]")
 
+let _allCountries = []
 let predictions = []
 
-window.onload = () => {
+window.onload = async () => {
     validQuery()
+    _allCountries = await getAllCountryNames()
+    console.log(_allCountries)
 }
 
 query.addEventListener('input', async () => {
@@ -29,13 +32,7 @@ validQuery = () => {
     submit.disabled = (!query.value) ? true : false
 }
 
-getPredictions = async () => {
-    let response = await fetch(`https://restcountries.com/v3.1/name/${query.value}`)
-    let result = await response.json()
-    let names = []
-    let amount = result.length > 10 ? 10 : result.length
-    for (let i = 0; i < amount; i++) {
-        names.push(result[i].name.common)
-    }
-    return names
+getAllCountryNames = async () => {
+    let response = await fetch('https://restcountries.com/v2/all?fields=name')
+    return await response.json()
 }
