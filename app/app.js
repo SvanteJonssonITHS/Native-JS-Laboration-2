@@ -5,30 +5,7 @@ let _predictionList = document.querySelector('#predictions-wrapper')
 let _activePrediction = -1
 
 window.onload = async () => {
-    validQuery()
     _allCountries = await getAllCountryNames()
-    console.log(_allCountries)
-}
-
-_query.addEventListener('input', async () => {
-    validQuery()
-    if(_query.value){
-        predictions = await getPredictions()
-        console.log(predictions)
-    }
-})
-
-_form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    console.log(query.value)
-    //https://restcountries.com/v3.1/name/(name)
-    let response = await fetch(`https://restcountries.com/v3.1/name/${_query.value}?fullText=true`)
-    let result = await response.json()
-    console.log(result)
-})
-
-validQuery = () => {
-    submit.disabled = (!_query.value) ? true : false
 }
 
 getAllCountryNames = async () => {
@@ -88,28 +65,25 @@ changeActivePrediction = (direction) => {
     }
 }
 
-_input.addEventListener('input', () => {
-    let query = event.target.value
-    let arr = ['sweden', 'somalia']
+_query.addEventListener('input', () => {
+    let query = _query.value
 
-    closePredictionList(_list) //TODO | close the prediciton list
+    closePredictionList(_predictionList)
 
-    if(!query) return false//Stop if no value is inputted
+    if(!query) return false
 
-    document.querySelector('body').appendChild(_list) //TODO | change append selector
-
-    for(let i = 0; i < arr.length; i++) {
-        let prediciton = arr[i]
-        if(prediciton.substr(0, query.length).toLowerCase() == query.toLowerCase()) {
-            _list.appendChild(createPrediction(prediciton, query)) //TODO | add prediction to list of predictions
+    for(let i = 0; i < _allCountries.length; i++) {
+        let prediciton = _allCountries[i]
+        if(prediciton.name.substr(0, query.length).toLowerCase() == query.toLowerCase()) {
+            _predictionList.appendChild(createPrediction(prediciton.name, query))
         }
     }
 
-    openPredictionList(_list)
+    openPredictionList(_predictionList)
 
 })
 
-_input.addEventListener('keydown', () => {
+_query.addEventListener('keydown', () => {
     switch (event.keyCode) {
         case 38:
             changeActivePrediction('up')
@@ -125,5 +99,13 @@ _input.addEventListener('keydown', () => {
 })
 
 document.addEventListener('click', function (e) {
-    closePredictionList(_list);
+    closePredictionList(_predictionList);
 })
+
+handleSubmit = () => {
+    if (_activePrediction == -1) {
+        return false //TODO | kör den riktiga submitten
+    }
+    let prediciton = document.querySelector('.active-prediction')
+    prediciton.click()
+}
