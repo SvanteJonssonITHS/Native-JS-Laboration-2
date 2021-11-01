@@ -12,7 +12,7 @@ let deleteBtn = document.querySelector('.delete-modal>button')
 window.onload = async () => {
     errorCheck('add')
     //Inital GET
-    let _cities = await getCities()
+    _cities = await getCities()
     if (_cities) {
         console.info(`${getTime()} | Cities have been retrieved`)
         renderCities(_cities)
