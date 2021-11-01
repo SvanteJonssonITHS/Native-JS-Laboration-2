@@ -87,3 +87,24 @@ changeActivePrediction = (direction) => {
         predicitons[_activePrediction].classList.add('active-prediction')
     }
 }
+
+_input.addEventListener('input', () => {
+    let query = event.target.value
+    let arr = ['sweden', 'somalia']
+
+    closePredictionList(_list) //TODO | close the prediciton list
+
+    if(!query) return false//Stop if no value is inputted
+
+    document.querySelector('body').appendChild(_list) //TODO | change append selector
+
+    for(let i = 0; i < arr.length; i++) {
+        let prediciton = arr[i]
+        if(prediciton.substr(0, query.length).toLowerCase() == query.toLowerCase()) {
+            _list.appendChild(createPrediction(prediciton, query)) //TODO | add prediction to list of predictions
+        }
+    }
+
+    openPredictionList(_list)
+
+})
