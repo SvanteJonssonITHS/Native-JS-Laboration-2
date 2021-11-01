@@ -87,13 +87,15 @@ createCityCard = (city) => {
     let edit = document.createElement('button')
     edit.title = 'Redigera'
     edit.innerHTML = '<span class="material-icons">edit</span>'
-    edit.onclick = () => openModal('edit', city.id) //TODO
+    edit.setAttribute('class', 'primary-btn')
+    edit.onclick = () => openModal('edit', city.id)
 
     //Remove button
     let remove = document.createElement('button')
     remove.title = 'Radera'
     remove.innerHTML = '<span class="material-icons">delete</span>'
-    remove.onclick = () => openModal('delete', city.id) //TODO
+    remove.setAttribute('class', 'primary-btn')
+    remove.onclick = () => openModal('delete', city.id)
 
     //Elements added to wrapper
     actionsWrapper.append(edit, remove)
@@ -161,15 +163,25 @@ deleteCity = async (id) => {
     closeModal()
 }
 
-addForm.addEventListener('submit', async (e) => { //TODO, onchange på input fälten så att knappen blir disabled, lägg även till felmeddelande
+addForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     let name = e.target['add-name'].value
     let population = e.target['add-population'].value
+    let message = document.querySelector('#add-message')
+    let cityExists = -1
+
     if (name && population) {
-        let cityExists = _cities.findIndex(c => c.name === name)
-        if (cityExists == -1) _cities = await addCity(name, population)
+        cityExists =  _cities.findIndex(c => c.name === name)
+        if (cityExists == -1){
+            message.textContent = `${name} lades till i databasen`
+            message.setAttribute('class', 'success')
+            _cities = await addCity(name, population)
+        } else {
+            message.textContent = `${name} finns redan i databasen`
+            message.setAttribute('class', 'fail')
+        }
     }
-    if (_cities) {
+    if (_cities && cityExists == -1) {
         console.info(`${getTime()} | Updating cities...`)
         renderCities(_cities)
     }
