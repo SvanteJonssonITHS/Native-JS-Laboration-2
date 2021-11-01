@@ -1,20 +1,21 @@
-let _form = document.querySelector("form")
-let _query = document.querySelector("input[type=text]")
-let _allCountries = []
-let _predictionList = document.querySelector('#predictions-wrapper')
-let _activePrediction = -1
+const _form = document.querySelector("form"),
+      _query = document.querySelector("input[type=text]"),
+      _predictionList = document.querySelector('#predictions-wrapper')
+
+let _allCountries = [],
+    _activePrediction = -1
 
 window.onload = async () => {
     _allCountries = prepareNameArray(await getAllCountryNames())
 }
 
 getAllCountryNames = async () => {
-    let response = await fetch('https://restcountries.com/v2/all?fields=name,nativeName,altSpellings')
+    const response = await fetch('https://restcountries.com/v2/all?fields=name,nativeName,altSpellings')
     return await response.json()
 }
 
 prepareNameArray = (countries) => {
-    let arr = JSON.parse(localStorage.getItem('allcoutries')) || []
+    const arr = JSON.parse(localStorage.getItem('allcoutries')) || []
     if(arr.length == 0) {
         for (let i = 0; i < countries.length; i++) {
             const country = countries[i];
@@ -38,7 +39,7 @@ closePredictionList = (element) => {
 }
 
 createPrediction = (prediction, query) => {
-    let element = document.createElement('div')
+    const element = document.createElement('div')
     element.setAttribute('class', 'prediction')
     element.innerHTML = "<strong>" + prediction.substr(0, query.length) + "</strong>"
     element.innerHTML += prediction.substr(query.length)
@@ -51,9 +52,9 @@ createPrediction = (prediction, query) => {
 }
 
 changeActivePrediction = (direction) => {
-    let predicitons = document.querySelectorAll('.prediction')
+    const predicitons = document.querySelectorAll('.prediction')
     for(let i = 0; i < predicitons.length; i++) {
-        let prediciton = predicitons[i]
+        const prediciton = predicitons[i]
         if(prediciton.classList.contains('active-prediction')) {
             _activePrediction = i
             prediciton.classList.remove('active-prediction')
@@ -79,14 +80,14 @@ changeActivePrediction = (direction) => {
 }
 
 _query.addEventListener('input', () => {
-    let query = _query.value
+    const query = _query.value
 
     closePredictionList(_predictionList)
 
     if(!query) return false
 
     for(let i = 0; i < _allCountries.length; i++) {
-        let prediciton = _allCountries[i].alt
+        const prediciton = _allCountries[i].alt
         if(prediciton.substr(0, query.length).toLowerCase() == query.toLowerCase()) {
             _predictionList.appendChild(createPrediction(prediciton, query))
             if(_predictionList.children.length >= 10) break;
@@ -120,7 +121,7 @@ handleSubmit = () => {
     if (_activePrediction == -1) {
         searchCountry()
     } else {
-        let prediciton = document.querySelector('.active-prediction')
+        const prediciton = document.querySelector('.active-prediction')
         prediciton.click()
     }
 }

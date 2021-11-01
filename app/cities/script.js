@@ -1,13 +1,14 @@
-let citiesContainer = document.querySelector('#cities-container')
-let addForm = document.querySelector('#add-form')
-let addFields = document.querySelectorAll('#add-form>input[id^=add-]')
-let editForm = document.querySelector('#edit-form')
-let editFields = document.querySelectorAll('#edit-form>input[id^=edit-]')
+const citiesContainer = document.querySelector('#cities-container'),
+      addForm = document.querySelector('#add-form'),
+      addFields = document.querySelectorAll('#add-form>input[id^=add-]'),
+      editForm = document.querySelector('#edit-form'),
+      editFields = document.querySelectorAll('#edit-form>input[id^=edit-]'),
+      cancelBtns = document.querySelectorAll('.cancel-button'),
+      addBtn = document.querySelector('#add-form>input[type=submit]'),
+      editBtn = document.querySelector('.edit-modal>button'),
+      deleteBtn = document.querySelector('.delete-modal>button')
+
 let _cities = []
-let cancelBtns = document.querySelectorAll('.cancel-button')
-let addBtn = document.querySelector('#add-form>input[type=submit]')
-let editBtn = document.querySelector('.edit-modal>button')
-let deleteBtn = document.querySelector('.delete-modal>button')
 
 window.onload = async () => {
     errorCheck('add')
@@ -18,7 +19,7 @@ window.onload = async () => {
         renderCities(_cities)
     }
     setInterval(async () => {
-        let result = await getCities()
+        const result = await getCities()
         if (JSON.stringify(_cities) != JSON.stringify(result)) {
             console.info(`${getTime()} | Updating cities...`)
             _cities = result
@@ -64,34 +65,34 @@ renderCities = (results) => {
 
 createCityCard = (city) => {
     //Info wrapper
-    let infoWrapper = document.createElement('div')
+    const infoWrapper = document.createElement('div')
     infoWrapper.setAttribute('class', 'info-wrapper')
 
     //City name
-    let name = document.createElement('h3')
+    const name = document.createElement('h3')
     name.title = city.name
     name.textContent = city.name
 
     //City population 
-    let population = document.createElement('p')
+    const population = document.createElement('p')
     population.textContent = `Folkmängd: ${Intl.NumberFormat().format(city.population)}`
 
     //Elements added to wrapper
     infoWrapper.append(name, population)
 
     //Action wrapper
-    let actionsWrapper = document.createElement('div')
+    const actionsWrapper = document.createElement('div')
     actionsWrapper.setAttribute('class', 'actions-wrapper')
 
     //Edit button
-    let edit = document.createElement('button')
+    const edit = document.createElement('button')
     edit.title = 'Redigera'
     edit.innerHTML = '<span class="material-icons">edit</span>'
     edit.setAttribute('class', 'primary-btn')
     edit.onclick = () => openModal('edit', city.id)
 
     //Remove button
-    let remove = document.createElement('button')
+    const remove = document.createElement('button')
     remove.title = 'Radera'
     remove.innerHTML = '<span class="material-icons">delete</span>'
     remove.setAttribute('class', 'primary-btn')
@@ -101,7 +102,7 @@ createCityCard = (city) => {
     actionsWrapper.append(edit, remove)
 
     //City card
-    let card = document.createElement('div')
+    const card = document.createElement('div')
     card.setAttribute('class', 'card')
     card.append(infoWrapper, actionsWrapper)
 
@@ -127,14 +128,14 @@ addCity = async (name, population) => {
 }
 
 editCity = async (id) => {
-    let name = document.querySelectorAll('#edit-name')[0]
-    let population = document.querySelectorAll('#edit-population')[0]
-    let city = {
+    const name = document.querySelectorAll('#edit-name')[0]
+    const population = document.querySelectorAll('#edit-population')[0]
+    const city = {
         "id": id,
         "name": name.value,
         "population": parseInt(population.value)
     }
-    let response = await fetch(`https://avancera.app/cities/${id}`, {
+    const response = await fetch(`https://avancera.app/cities/${id}`, {
         body: JSON.stringify(city),
         headers: {
             'Content-Type': 'application/json'
@@ -151,7 +152,7 @@ editCity = async (id) => {
 }
 
 deleteCity = async (id) => {
-    let response = await fetch(`https://avancera.app/cities/${id}`, {
+    const response = await fetch(`https://avancera.app/cities/${id}`, {
         method: 'DELETE'
     })
     console.info(`${getTime()} | %cDELETE request%c for city %c${id}%c ended with status %c${response.status}`, 'color: red', '', 'color: brown', '', 'color: purple')
@@ -165,9 +166,9 @@ deleteCity = async (id) => {
 
 addForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    let name = e.target['add-name'].value
-    let population = e.target['add-population'].value
-    let message = document.querySelector('#add-message')
+    const name = e.target['add-name'].value
+    const population = e.target['add-population'].value
+    const message = document.querySelector('#add-message')
     let cityExists = -1
 
     if (name && population) {
@@ -188,20 +189,20 @@ addForm.addEventListener('submit', async (e) => {
 })
 
 openModal = async (type, id) => {
-    let modal = document.querySelector('.modal')
-    let title = document.querySelector('#modal-title')
+    const modal = document.querySelector('.modal')
+    const title = document.querySelector('#modal-title')
     let modalContent
     switch (type) {
         case 'edit':
             title.textContent = 'Redigera Stad'
             modalContent = document.querySelectorAll('.edit-modal')
 
-            let city = await getCity(id)
+            const city = await getCity(id)
 
-            let name = document.querySelectorAll('#edit-name')[0]
+            const name = document.querySelectorAll('#edit-name')[0]
             name.value = `${city.name}`
 
-            let population = document.querySelectorAll('#edit-population')[0]
+            const population = document.querySelectorAll('#edit-population')[0]
             population.value = `${city.population}`
 
             errorCheck('edit')
@@ -221,9 +222,9 @@ openModal = async (type, id) => {
 }
 
 closeModal = () => {
-    let modal = document.querySelector('.modal')
+    const modal = document.querySelector('.modal')
     modal.hidden = true
-    let modalContent = document.querySelectorAll('.edit-modal, .delete-modal')
+    const modalContent = document.querySelectorAll('.edit-modal, .delete-modal')
     modalContent.forEach(element => element.hidden = true)
 }
 
@@ -241,8 +242,8 @@ errorCheck = (type) => {
             button = editBtn
         break;
     }
-    let nameValid = (name.value.length > 0)
-    let populationValid = (population.value.toString().length > 0 && !isNaN(population.value))
+    const nameValid = (name.value.length > 0)
+    const populationValid = (population.value.toString().length > 0 && !isNaN(population.value))
 
     if (nameValid) { //Name field is valid
         name.classList.remove('invalid-input')
