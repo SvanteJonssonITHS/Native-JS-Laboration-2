@@ -108,3 +108,18 @@ _input.addEventListener('input', () => {
     openPredictionList(_list)
 
 })
+
+_input.addEventListener('keydown', () => {
+    switch (event.keyCode) {
+        case 38:
+            changeActivePrediction('up')
+        break;
+        case 40:
+        changeActivePrediction('down')
+        break;
+        case 13:
+        event.preventDefault()
+        handleSubmit()
+        break;
+    }
+})
