@@ -58,3 +58,32 @@ createPrediction = (prediction, query) => {
     })
     return element
 }
+
+changeActivePrediction = (direction) => {
+    let predicitons = document.querySelectorAll('.prediction')
+
+    for(let i = 0; i < predicitons.length; i++) {
+        let prediciton = predicitons[i]
+        if(prediciton.classList.contains('active-prediction')) {
+            _activePrediction = i
+            prediciton.classList.remove('active-prediction')
+        }
+    }
+    switch (direction) {
+        case 'up':
+        _activePrediction--
+        break;
+        case 'down':
+        _activePrediction++
+        break;
+    }
+    if(_activePrediction < -1) {
+        _activePrediction = -1
+    } else if(_activePrediction >= predicitons.length) {
+        _activePrediction = predicitons.length -1
+    }
+
+    if(_activePrediction != -1) {
+        predicitons[_activePrediction].classList.add('active-prediction')
+    }
+}
