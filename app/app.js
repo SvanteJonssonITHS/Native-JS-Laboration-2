@@ -123,3 +123,7 @@ _input.addEventListener('keydown', () => {
         break;
     }
 })
+
+document.addEventListener('click', function (e) {
+    closePredictionList(_list);
+})
