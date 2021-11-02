@@ -37,12 +37,15 @@ prepareNameArray = (countries) => {
 }
 
 openPredictionList = (element) => {
-    element.hidden = false
+    element.style.display = 'block'
+    _query.classList.add('search-bar-predictions')
+
 }
 
 closePredictionList = (element) => {
     element.innerHTML = ''
-    element.hidden = true
+    element.style.display = 'none'
+    _query.classList.remove('search-bar-predictions')
     _activePrediction = -1
 }
 
@@ -121,7 +124,7 @@ _query.addEventListener('keydown', () => {
     }
 })
 
-document.addEventListener('click', function (e) {
+document.addEventListener('mousedown', function (e) {
     closePredictionList(_predictionList);
 })
 

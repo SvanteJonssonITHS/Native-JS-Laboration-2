@@ -45,16 +45,20 @@ main {
 }
 
 .search-bar {
-    margin-block: 7.5%;
     width: 35vw;
     height: 45px;
+    padding-left: 2%;
     font-size: 100%;
-    padding-inline: 1.5%;
     border-radius: 7px;
     background-color: #C8BCBF;
     border: none;
     color: #293161;
     font-weight: 500;
+}
+
+.search-bar-predictions {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .search-bar::placeholder {
@@ -127,6 +131,31 @@ main {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.prediction {
+    height: 2em;
+    line-height: 2em;
+    cursor: pointer;
+}
+
+.search-bar-wrapper {
+    position: relative;
+    margin-block: 7.5%;
+    padding-inline: 1.5%;
+}
+
+#predictions-wrapper {
+    display: none;
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35vw;
+    background-color: #C8BCBF;
+    color: #293161;
+    outline: 2px solid #293161;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -142,7 +171,7 @@ main {
 
     .search-bar:active,
     .search-bar:focus {
-        outline: 2px solid #C8BCBF;
+        outline-color: #C8BCBF;
     }
 
     .recent-list a {
@@ -155,5 +184,11 @@ main {
 
     .img-wrapper {
         background-color: #5C6494;
+    }
+
+    #predictions-wrapper { 
+        background-color: #5C6494;
+        color: #C8BCBF;
+        outline-color: #C8BCBF;
     }
 }
