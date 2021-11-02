@@ -126,7 +126,7 @@ handleSubmit = () => {
     }
 }
 
-searchCountry = () => {
+searchCountry = async () => {
     let query = _query.value.toLowerCase()
     let name 
     for (let i = 0; i < _allCountries.length; i++) {
@@ -137,11 +137,16 @@ searchCountry = () => {
         }
     }
     if(!name) return false //TODO | add message about faulty query
+    const country = {
+        name: name,
+        flag: await getCountryFlag(name)
+    }
+    console.log(country)
     let recent = []
     if(localStorage.getItem('recent')) {
         recent = JSON.parse(localStorage.getItem('recent'))
         let index = recent.findIndex((e) => e == name)
-        recent.unshift(name)
+        recent.unshift(country)
         
         if(index != -1) {
             recent.splice(index+1, 1)
@@ -150,8 +155,14 @@ searchCountry = () => {
             recent.pop()
         }
     } else {
-        recent = [name]
+        recent = [country]
     }
     localStorage.setItem('recent', JSON.stringify(recent))
     window.location = `./country?name=${name.replaceAll(' ', '-')}`
+}
+
+getCountryFlag = async (name) => {
+    const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true&fields=flags`)
+    const flag = await response.json()
+    return flag[0].flags.png
 }
