@@ -202,7 +202,7 @@ createRecentSearchCard = (country) => {
 
 showRecentSearches = (recentSearches) => {
     if(recentSearches && recentSearches.length > 0) {
-        _recentWrapper.style.display = 'initial'
+        _recentWrapper.style.display = 'block'
         JSON.parse(recentSearches).forEach(country => {
             _recentList.append(createRecentSearchCard(country))
         })

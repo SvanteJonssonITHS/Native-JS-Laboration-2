@@ -47,7 +47,7 @@ main {
 .search-bar {
     width: 35vw;
     height: 45px;
-    padding-left: 2%;
+    padding-left: 1.75%;
     font-size: 100%;
     border-radius: 7px;
     background-color: #C8BCBF;
@@ -159,7 +159,7 @@ main {
     top: calc(100% + 2px);
     left: 50%;
     transform: translateX(-50%);
-    width: 35vw;
+    width: 35vw !important;
     background-color: #C8BCBF;
     color: #293161;
     outline: 2px solid #293161;
