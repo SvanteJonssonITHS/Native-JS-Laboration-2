@@ -139,6 +139,10 @@ main {
     cursor: pointer;
 }
 
+.prediction:hover {
+    background-color: #C8BCBF;
+}
+
 .active-prediction {
     background-color: #C8BCBF;
 }
@@ -200,6 +204,11 @@ main {
         color: #C8BCBF;
         outline-color: #C8BCBF;
     }
+
+    .prediction:hover {
+        background-color: #475086;
+    }
+    
     .active-prediction {
         background-color: #475086;
     }
