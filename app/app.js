@@ -56,7 +56,8 @@ createPrediction = (prediction, query) => {
     element.innerHTML += prediction.substr(query.length)
     element.innerHTML += "<input type='hidden' value='" + prediction + "'>"
     element.addEventListener('click', () => {
-        _query.value = document.querySelector('.active-prediction>input').value
+        event.stopPropagation();
+        _query.value = event.target.children[1].value
         searchCountry()
     })
     return element
@@ -124,8 +125,10 @@ _query.addEventListener('keydown', () => {
     }
 })
 
-document.addEventListener('mousedown', function (e) {
-    closePredictionList(_predictionList);
+document.addEventListener('mousedown', function () {
+    if(!window.event.target.classList.contains('search-bar') && !window.event.target.classList.contains('prediction')) {
+        closePredictionList(_predictionList)
+    }
 })
 
 handleSubmit = () => {

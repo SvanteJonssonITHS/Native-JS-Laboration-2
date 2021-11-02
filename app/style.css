@@ -59,6 +59,7 @@ main {
 .search-bar-predictions {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    outline: 2px solid #293161 !important;
 }
 
 .search-bar::placeholder {
@@ -167,6 +168,10 @@ main {
     .search-bar {
         background-color: #5C6494;
         color: #C8BCBF;
+    }
+
+    .search-bar-predictions {
+        outline-color: #C8BCBF !important;
     }
 
     .search-bar:active,
