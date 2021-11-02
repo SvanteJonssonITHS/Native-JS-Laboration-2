@@ -113,6 +113,7 @@ main {
     display: flex;
     justify-content: center;
     width: 80%;
+    aspect-ratio: 3/2;
     padding: 10%;
     margin-top: 10%;
     border-radius: 10px;

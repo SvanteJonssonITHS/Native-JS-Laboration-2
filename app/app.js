@@ -1,12 +1,20 @@
 const _form = document.querySelector("form"),
       _query = document.querySelector("input[type=text]"),
-      _predictionList = document.querySelector('#predictions-wrapper')
+      _predictionList = document.querySelector('#predictions-wrapper'),
+      _recentList = document.querySelector('.recent-list')
 
 let _allCountries = [],
-    _activePrediction = -1
+    _activePrediction = -1,
+    _recentSearches = []
 
 window.onload = async () => {
     _allCountries = prepareNameArray(await getAllCountryNames())
+    _recentSearches = localStorage.getItem('recent')
+    if(_recentSearches.length > 0) {
+        JSON.parse(_recentSearches).forEach(country => {
+            _recentList.append(createRecentSearchCard(country))
+        });
+    }
 }
 
 getAllCountryNames = async () => {
@@ -165,4 +173,26 @@ getCountryFlag = async (name) => {
     const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true&fields=flags`)
     const flag = await response.json()
     return flag[0].flags.png
+createRecentSearchCard = (country) => {
+    const li = document.createElement('li')
+
+    const a = document.createElement('a')
+    a.setAttribute('href', `./country?name=${country.name.replaceAll(' ', '-')}`)
+
+    const article = document.createElement('article')
+    article.setAttribute('class', 'recent-search')
+
+    const div = document.createElement('div')
+    div.setAttribute('class', 'img-wrapper')
+    div.innerHTML = `<img src="${country.flag}" alt="${country.name}" width="100%">`
+
+    const p = document.createElement('p')
+    p.setAttribute('class', 'recent-search-name')
+    p.textContent = country.name
+
+    article.append(div, p)
+    a.append(article)
+    li.append(a)
+
+    return li
 }
