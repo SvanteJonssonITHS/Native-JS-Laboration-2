@@ -139,6 +139,10 @@ main {
     cursor: pointer;
 }
 
+.active-prediction {
+    background-color: #C8BCBF;
+}
+
 .search-bar-wrapper {
     position: relative;
     margin-block: 7.5%;
@@ -195,5 +199,8 @@ main {
         background-color: #5C6494;
         color: #C8BCBF;
         outline-color: #C8BCBF;
+    }
+    .active-prediction {
+        background-color: #475086;
     }
 }
