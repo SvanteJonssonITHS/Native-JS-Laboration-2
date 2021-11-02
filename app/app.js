@@ -179,6 +179,7 @@ createRecentSearchCard = (country) => {
 
     const a = document.createElement('a')
     a.setAttribute('href', `./country?name=${country.name.replaceAll(' ', '-')}`)
+    a.setAttribute('title', country.name)
 
     const article = document.createElement('article')
     article.setAttribute('class', 'recent-search')
