@@ -170,9 +170,11 @@ searchCountry = async () => {
 }
 
 getCountryFlag = async (name) => {
-    const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true&fields=flags`)
+    const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fields=flags`)
     const flag = await response.json()
-    return flag[0].flags.png
+    return flag[0].flags.svg
+}
+
 createRecentSearchCard = (country) => {
     const li = document.createElement('li')
 
