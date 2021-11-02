@@ -74,6 +74,7 @@ main {
 .recent-wrapper {
     width: 45vw;
     margin: auto;
+    display: none;
 }
 
 .recent-wrapper>h2 {
@@ -150,7 +151,6 @@ main {
 .search-bar-wrapper {
     position: relative;
     margin-block: 7.5%;
-    padding-inline: 1.5%;
 }
 
 #predictions-wrapper {

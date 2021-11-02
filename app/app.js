@@ -1,20 +1,15 @@
 const _form = document.querySelector("form"),
       _query = document.querySelector("input[type=text]"),
       _predictionList = document.querySelector('#predictions-wrapper'),
+      _recentWrapper = document.querySelector('.recent-wrapper'),
       _recentList = document.querySelector('.recent-list')
 
 let _allCountries = [],
-    _activePrediction = -1,
-    _recentSearches = []
+    _activePrediction = -1
 
 window.onload = async () => {
     _allCountries = prepareNameArray(await getAllCountryNames())
-    _recentSearches = localStorage.getItem('recent')
-    if(_recentSearches.length > 0) {
-        JSON.parse(_recentSearches).forEach(country => {
-            _recentList.append(createRecentSearchCard(country))
-        });
-    }
+    showRecentSearches(localStorage.getItem('recent'))
 }
 
 getAllCountryNames = async () => {
@@ -203,4 +198,15 @@ createRecentSearchCard = (country) => {
     li.append(a)
 
     return li
+}
+
+showRecentSearches = (recentSearches) => {
+    if(recentSearches && recentSearches.length > 0) {
+        _recentWrapper.style.display = 'initial'
+        JSON.parse(recentSearches).forEach(country => {
+            _recentList.append(createRecentSearchCard(country))
+        })
+    } else {
+        _recentWrapper.style.display = 'none'
+    }
 }
