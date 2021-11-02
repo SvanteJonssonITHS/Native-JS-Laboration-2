@@ -127,10 +127,11 @@ handleSubmit = () => {
 }
 
 searchCountry = () => {
+    let query = _query.value.toLowerCase()
     let name 
     for (let i = 0; i < _allCountries.length; i++) {
         const country = _allCountries[i];
-        if(_query.value == country.common || _query.value == country.alt){
+        if(query == country.common.toLowerCase() || query == country.alt.toLowerCase()){
             name = country.common
             break
         }
