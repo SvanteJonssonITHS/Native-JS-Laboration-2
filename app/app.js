@@ -149,11 +149,10 @@ searchCountry = async () => {
         name: name,
         flag: await getCountryFlag(name)
     }
-    console.log(country)
     let recent = []
     if(localStorage.getItem('recent')) {
         recent = JSON.parse(localStorage.getItem('recent'))
-        let index = recent.findIndex((e) => e == name)
+        let index = recent.findIndex((e) => e.name == name)
         recent.unshift(country)
         
         if(index != -1) {
