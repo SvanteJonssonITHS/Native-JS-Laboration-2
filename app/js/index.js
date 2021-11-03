@@ -13,7 +13,7 @@ window.onload = async () => {
 }
 
 getAllCountryNames = async () => {
-    const response = await fetch('https://restcountries.com/v2/all?fields=name,nativeName,altSpellings')
+    const response = await fetch('https://restcountries.com/v3.1/all?fields=name,altSpellings')
     return await response.json()
 }
 
