@@ -81,11 +81,7 @@ main {
     flex-grow: 1;
     max-width: 16%;
     margin-inline: 2%;
-}
-
-.recent-list a {
-    text-decoration: none;
-    color: #333D79
+    cursor: pointer;
 }
 
 .recent-search {

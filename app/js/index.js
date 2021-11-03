@@ -181,7 +181,12 @@ searchCountry = async () => {
         recent = [country]
     }
     localStorage.setItem('recent', JSON.stringify(recent))
-    window.location = `./country?name=${name.replaceAll(' ', '-')}`
+    saveAndRedirect(name)
+}
+
+saveAndRedirect = (country) => {
+    sessionStorage.setItem('country', country)
+    window.location = `./country.html`
 }
 
 getCountryFlag = async (name) => {
@@ -193,9 +198,9 @@ getCountryFlag = async (name) => {
 createRecentSearchCard = (country) => {
     const li = document.createElement('li')
 
-    const a = document.createElement('a')
-    a.setAttribute('href', `./country?name=${country.name.replaceAll(' ', '-')}`)
-    a.setAttribute('title', country.name)
+    const container = document.createElement('div')
+    container.onclick = () => saveAndRedirect(country.name)
+    container.setAttribute('title', country.name)
 
     const article = document.createElement('article')
     article.setAttribute('class', 'recent-search')
@@ -209,8 +214,8 @@ createRecentSearchCard = (country) => {
     p.textContent = country.name
 
     article.append(div, p)
-    a.append(article)
-    li.append(a)
+    container.append(article)
+    li.append(container)
 
     return li
 }
