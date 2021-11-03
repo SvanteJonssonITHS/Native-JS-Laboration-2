@@ -14,6 +14,31 @@ body {
 .back-btn {
     grid-area: 1 / 1 / 2 / 2;
     place-self: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em 1em;
+    margin: 0.5em 0 0 0.5em;
+    border: 2px solid blueviolet;
+    border-radius: 5em;
+    text-decoration: none;
+    color: blueviolet;
+    font-size: 100%;
+    font-weight: 500;
+    transition: all 150ms;
+}
+
+.back-btn:hover,
+.back-btn:focus {
+    transform: scale(101%);
+    box-shadow: 0.1em 0.1em 0 blueviolet;
+    margin: 0.4em 0 0 0.4em;
+}
+
+.back-btn:active {
+    transform: scale(100%);
+    box-shadow: none;
+    margin: 0.5em 0 0 0.5em;
 }
 
 .quick-overview {
