@@ -30,7 +30,7 @@ body {
 .back-btn:focus {
     transform: scale(101%);
     box-shadow: 0.1em 0.1em 0 blueviolet;
-    margin: 0.4em 0 0 0.4em;
+    margin: 0.4em 0.1em 0.1em 0.4em;
 }
 
 .back-btn:active {
