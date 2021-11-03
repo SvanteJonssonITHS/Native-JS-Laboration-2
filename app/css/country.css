@@ -4,7 +4,7 @@ body {
 }
 
 .sidebar {
-    flex: 1 1 auto;
+    flex: 1 1 200px;
     display: flex;
     flex-direction: column;
 }
@@ -46,6 +46,26 @@ body {
     padding: 1em;
     border-radius: 7px;
     background-color: #e4e4e2;
+}
+
+.country-identity {
+    text-align: center;
+}
+
+.national-symbols-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    aspect-ratio: 16/5;
+    padding-block: 0.5em;
+}
+
+.national-symbols-wrapper>img:first-of-type {
+    width: 35%;
+}
+
+.national-symbols-wrapper>img:last-of-type {
+    width: 35%;
 }
 
 .main {
