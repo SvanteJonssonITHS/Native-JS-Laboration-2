@@ -18,17 +18,32 @@ getAllCountryNames = async () => {
 }
 
 prepareNameArray = (countries) => {
-    const arr = JSON.parse(localStorage.getItem('allcoutries')) || []
-    if(arr.length == 0) {
+    let allcoutries = JSON.parse(localStorage.getItem('allcoutries')) || []
+    if(allcoutries.length == 0) {
         for (let i = 0; i < countries.length; i++) {
-            const country = countries[i];
-            if(country.name) arr.push({common: country.name, alt: country.name})
-            if(country.nativeName && country.name != country.nativeName) arr.push({common: country.name, alt: country.nativeName})
-            if(country.altSpellings.length && country.name != country.altSpellings[0] && country.nativeName != country.altSpellings[0]) arr.push({common: country.name, alt: country.altSpellings[0]})
+            let countrySpellings = []
+            const country = countries[i]
+            if(!country.name || country.name.length < 1) continue;
+            countrySpellings.push({common: country.name.common, alt: country.name.common})
+            for (const lang in country.name.nativeName) {
+                countrySpellings.push({common: country.name.common, alt: country.name.nativeName[lang].common})
+            }
+            
+            if(country.altSpellings) {
+                country.altSpellings.forEach(spelling => {
+                    if(spelling.length < 4) {
+                        countrySpellings.push({common: country.name.common, alt: spelling})
+                    }
+                })
+            }
+
+            countrySpellings = countrySpellings.filter((instance, index, array) => index === array.findIndex(i => instance.alt === i.alt))
+
+            allcoutries = allcoutries.concat(countrySpellings)
         }
-        localStorage.setItem('allcoutries', JSON.stringify(arr))
+        localStorage.setItem('allcoutries', JSON.stringify(allcoutries))
     }
-    return arr
+    return allcoutries
 }
 
 openPredictionList = (element) => {
