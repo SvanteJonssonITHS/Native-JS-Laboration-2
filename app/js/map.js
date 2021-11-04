@@ -1,4 +1,4 @@
-createMap = (cioc) => {
+createMap = (cca3, lat, lng) => {
 	const mapStyle = new ol.style.Style({
 		fill: new ol.style.Fill({
 			color: '#567d46'
@@ -22,7 +22,8 @@ createMap = (cioc) => {
 		target: 'map',
 		view: new ol.View({
 			center: [0, 0],
-			zoom: 2
+			zoom: 2,
+			maxZoom: 2
 		})
 	})
 
@@ -43,8 +44,12 @@ createMap = (cioc) => {
 	})
 
 	map.on('postrender', () => {
-		centerCountry(map, vectorLayer, cioc)
-		highlightCountry(featureOverlay, vectorLayer, cioc)
+		if (cca3 && vectorLayer.getSource().getFeatureById(cca3)) {
+			centerCountry(map, vectorLayer, cca3)
+			highlightCountry(featureOverlay, vectorLayer, cca3)
+		} else {
+			map.getView().setCenter(ol.proj.transform([lng, lat], 'EPSG:4326', 'EPSG:3857'))
+		}
 	})
 }
 
