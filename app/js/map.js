@@ -44,7 +44,20 @@ createMap = (cioc) => {
 
 	map.on('postrender', () => {
 		centerCountry(map, vectorLayer, cioc)
+		highlightCountry(featureOverlay, vectorLayer, cioc)
 	})
+}
+
+highlightCountry = (featureOverlay, vectorLayer, cioc) => {
+	let highlight
+	const feature = vectorLayer.getSource().getFeatureById(cioc)
+	if (highlight) {
+		featureOverlay.getSource().removeFeature(highlight)
+	}
+	if (feature) {
+		featureOverlay.getSource().addFeature(feature)
+	}
+	highlight = feature
 }
 
 centerCountry = (map, vectorLayer, cioc) => {
