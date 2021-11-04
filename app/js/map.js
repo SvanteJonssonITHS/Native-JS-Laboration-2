@@ -24,7 +24,8 @@ createMap = (cca3, lat, lng) => {
 			center: [0, 0],
 			zoom: 2,
 			maxZoom: 2
-		})
+		}),
+		controls: ol.control.defaults({ zoom: false, attribution: false })
 	})
 
 	const highlightStyle = new ol.style.Style({
