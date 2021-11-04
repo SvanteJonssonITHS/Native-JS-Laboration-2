@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-        <!-- Site Info -->
-        <title>OnlyCountries</title>
-        <meta name="description" content="One site, only countries. Perfect!">
-        <meta name="author" content="Svante Jonsson">
-    
-        <!-- CSS -->
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="./css/country.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    
-        <!-- JS -->
-        <script src="./js/country.js" defer></script>
-    </head>
-    <body>
-        <div class="sidebar">
-            <a href="./index.html" class="back-btn"><span class="material-icons">arrow_back</span>Search</a>
-            <article class="quick-overview">
-                <section class="country-identity">
-                    <h2>Sweden</h2>
-                    <h3>Kingdom of Sweden</h3>
-                    <div class="national-symbols-wrapper">
-                        <img src="https://flagcdn.com/se.svg" alt="Flag">
-                        <img src="https://mainfacts.com/media/images/coats_of_arms/se.svg" alt="Coat of arms">
-                    </div>
-                </section>
-            </article>
-        </div>
-        <div class="main">
-            
-        </div>
-    </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Site Info -->
+		<title>OnlyCountries</title>
+		<meta name="description" content="One site, only countries. Perfect!" />
+		<meta name="author" content="Svante Jonsson" />
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/country.css" />
+
+		<!-- JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="./js/country.js" defer></script>
+	</head>
+	<body>
+		<div class="sidebar">
+			<a href="./index.html" class="back-btn"><span class="material-icons">arrow_back</span>Search</a>
+			<article class="quick-overview">
+				<section class="country-identity">
+					<h2>Sweden</h2>
+					<h3>Kingdom of Sweden</h3>
+					<div class="national-symbols-wrapper">
+						<img src="https://flagcdn.com/se.svg" alt="Flag" />
+						<img src="https://mainfacts.com/media/images/coats_of_arms/se.svg" alt="Coat of arms" />
+					</div>
+				</section>
+				<section class="region-wrapper">
+					<div class="map">tjo</div>
+				</section>
+				<section class="info-wrapper"></section>
+			</article>
+		</div>
+		<div class="main"></div>
+	</body>
 </html>
