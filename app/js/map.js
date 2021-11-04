@@ -43,6 +43,14 @@ createMap = (cioc) => {
 	})
 
 	map.on('postrender', () => {
+		centerCountry(map, vectorLayer, cioc)
 	})
 }
 
+centerCountry = (map, vectorLayer, cioc) => {
+	const feature = vectorLayer.getSource().getFeatureById(cioc)
+	if (feature) {
+		const extent = feature.getGeometry().getExtent()
+		map.getView().fit(extent)
+	}
+}
