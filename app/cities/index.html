@@ -1,94 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cities</title>
-    <meta name="description" content="Learn more about cities!">
-    <meta name="author" content="Svante Jonsson">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cities</title>
+		<meta name="description" content="Learn more about cities!" />
+		<meta name="author" content="Svante Jonsson" />
 
-    <!-- Import of CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<!-- Import of CSS -->
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-    <!-- Import of JS -->
-    <script src="script.js" defer></script>
-</head>
-<body>
-    <a href="#" id="return-btn" class="secondary-btn">&#60; Gå tillbaka</a>
-    <section>
-        <form id="add-form" autocomplete="off">
-            <h2>Lägg till en stad</h2>
-            <label for="name"><span class="required-icon">*</span>Namn</label>
-            <input type="text" id="add-name" class="input-base" minlength="1">
-            <label for="population"><span class="required-icon">*</span>Folkmängd</label>
-            <input type="number" id="add-population" class="input-base" min="0">
-            <input type="submit" value="Lägg till" class="primary-btn">
-            <span id="add-message"></span>
-        </form>
-    </section>
-    <section  id="cities-container">
-        <div class="card">
-            <div class="info-wrapper">
-                <h3>Göteborg</h3>
-                <p>Folkmängd: 12348709</p>
-            </div>
-            <div class="actions-wrapper">
-                <button>
-                    <span class="material-icons">
-                        edit
-                    </span>
-                </button>
-                <button>
-                    <span class="material-icons">
-                        delete
-                    </span>
-                </button>
-            </div>
-        </div>
-    </section>
-    <div class="modal" hidden>
-        <div class="modal-content">
-            <header>
-                <h2 id="modal-title">
-                    Title
-                </h2>
-                <button class="cancel-button secondary-btn">
-                    <span class="material-icons">
-                        close
-                    </span>
-                </button>
-            </header>
-            <main>
-                <span class="edit-modal" hidden>
-                    <form id="edit-form" autocomplete="off">
-                        <label for="name"><span class="required-icon">*</span>Namn</label>
-                        <input type="text" id="edit-name" class="input-base">
-                        <label for="population"><span class="required-icon">*</span>Folkmängd</label>
-                        <input type="number" id="edit-population" class="input-base">
-                    </form>
-                </span>
-                <span class="delete-modal" hidden>
-                    <p id="delete-warning">Är du säker på att du vill ta bort den här staden? Denna åtgärd är permanent och kan inte ångras!</p>
-                </span>
-            </main>
-            <footer>
-                <button class="cancel-button secondary-btn">
-                    Cancel
-                </button>
-                <span class="edit-modal" hidden>
-                    <button class="primary-btn">
-                        Update
-                    </button>
-                </span>
-                <span class="delete-modal" hidden>
-                    <button class="primary-btn">
-                        Delete
-                    </button>
-                </span>
-            </footer>
-        </div>
-    </div>
-</body>
+		<!-- Import of JS -->
+		<script src="script.js" defer></script>
+	</head>
+	<body>
+		<a href="#" id="return-btn" class="secondary-btn">&#60; Gå tillbaka</a>
+		<section>
+			<form id="add-form" autocomplete="off">
+				<h2>Lägg till en stad</h2>
+				<label for="name"><span class="required-icon">*</span>Namn</label>
+				<input type="text" id="add-name" class="input-base" minlength="1" />
+				<label for="population"><span class="required-icon">*</span>Folkmängd</label>
+				<input type="number" id="add-population" class="input-base" min="0" />
+				<input type="submit" value="Lägg till" class="primary-btn" />
+				<span id="add-message"></span>
+			</form>
+		</section>
+		<section id="cities-container">
+			<div class="card">
+				<div class="info-wrapper">
+					<h3>Göteborg</h3>
+					<p>Folkmängd: 12348709</p>
+				</div>
+				<div class="actions-wrapper">
+					<button>
+						<span class="material-icons"> edit </span>
+					</button>
+					<button>
+						<span class="material-icons"> delete </span>
+					</button>
+				</div>
+			</div>
+		</section>
+		<div class="modal" hidden>
+			<div class="modal-content">
+				<header>
+					<h2 id="modal-title">Title</h2>
+					<button class="cancel-button secondary-btn">
+						<span class="material-icons"> close </span>
+					</button>
+				</header>
+				<main>
+					<span class="edit-modal" hidden>
+						<form id="edit-form" autocomplete="off">
+							<label for="name"><span class="required-icon">*</span>Namn</label>
+							<input type="text" id="edit-name" class="input-base" />
+							<label for="population"><span class="required-icon">*</span>Folkmängd</label>
+							<input type="number" id="edit-population" class="input-base" />
+						</form>
+					</span>
+					<span class="delete-modal" hidden>
+						<p id="delete-warning">Är du säker på att du vill ta bort den här staden? Denna åtgärd är permanent och kan inte ångras!</p>
+					</span>
+				</main>
+				<footer>
+					<button class="cancel-button secondary-btn">Cancel</button>
+					<span class="edit-modal" hidden>
+						<button class="primary-btn">Update</button>
+					</span>
+					<span class="delete-modal" hidden>
+						<button class="primary-btn">Delete</button>
+					</span>
+				</footer>
+			</div>
+		</div>
+	</body>
 </html>

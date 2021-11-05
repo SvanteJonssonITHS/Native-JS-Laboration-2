@@ -3,262 +3,262 @@
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Ubuntu', sans-serif;
-    scroll-behavior: smooth;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Ubuntu', sans-serif;
+	scroll-behavior: smooth;
 }
 
 body {
-    display: flex;
-    position: relative;
+	display: flex;
+	position: relative;
 }
 
-body>section:first-of-type {
-    position: fixed;
-    width: 20%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    border-right: 2px solid #ccc;
+body > section:first-of-type {
+	position: fixed;
+	width: 20%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	border-right: 2px solid #ccc;
 }
 
 #return-btn {
-    white-space: nowrap;
-    height: min-content;
-    padding: 0.5em;
-    text-decoration: none;
-    margin: 0.5em;
-    z-index: 1;
-    position: absolute;
+	white-space: nowrap;
+	height: min-content;
+	padding: 0.5em;
+	text-decoration: none;
+	margin: 0.5em;
+	z-index: 1;
+	position: absolute;
 }
 
-body>section:last-of-type {
-    width: 80%;
-    margin-left: 20%;
-    position: relative;
-    z-index: 1;
+body > section:last-of-type {
+	width: 80%;
+	margin-left: 20%;
+	position: relative;
+	z-index: 1;
 }
 
 #add-form {
-    padding: 4em 2em;
-    width: 100%;
+	padding: 4em 2em;
+	width: 100%;
 }
 
-#add-form>*:not(label) {
-    display: block;
-    margin-bottom: 20px;
+#add-form > *:not(label) {
+	display: block;
+	margin-bottom: 20px;
 }
 
-#add-form>label {
-    margin-bottom: 5px;
-    display: inline-block;
+#add-form > label {
+	margin-bottom: 5px;
+	display: inline-block;
 }
 
-#add-form>input[type=submit] {
-    margin-left: auto;
+#add-form > input[type='submit'] {
+	margin-left: auto;
 }
 
 .input-base {
-    width: 100%;
-    height: 30px;
-    font-size: 100%;
-    padding-left: 0.5em;
-    border-radius: 4px;
-    border: none;
-    outline: 2px solid #ccc;
+	width: 100%;
+	height: 30px;
+	font-size: 100%;
+	padding-left: 0.5em;
+	border-radius: 4px;
+	border: none;
+	outline: 2px solid #ccc;
 }
 
 .primary-btn {
-    border: none;
-    padding: 1em 1.5em;
-    border-radius: 4px;
-    font-weight: 400;
-    color: #FFFFFF;
-    background-color: #3369ff;
-    text-align: center;
-    cursor: pointer;
+	border: none;
+	padding: 1em 1.5em;
+	border-radius: 4px;
+	font-weight: 400;
+	color: #ffffff;
+	background-color: #3369ff;
+	text-align: center;
+	cursor: pointer;
 }
 
 .secondary-btn {
-    padding: 1em 1.5em;
-    border-radius: 4px;
-    font-weight: 400;
-    border: 1px solid #3369ff;
-    color: #3369ff;
-    background-color: #FFF;
-    text-align: center;
-    cursor: pointer;
+	padding: 1em 1.5em;
+	border-radius: 4px;
+	font-weight: 400;
+	border: 1px solid #3369ff;
+	color: #3369ff;
+	background-color: #fff;
+	text-align: center;
+	cursor: pointer;
 }
 
 .primary-btn:active,
 .secondary-btn:active {
-    transform: scale(95%);
+	transform: scale(95%);
 }
 
 .primary-btn:disabled,
 .secondary-btn:disabled {
-    filter: grayscale(100%);
-    transform: scale(100%);
+	filter: grayscale(100%);
+	transform: scale(100%);
 }
 
 #cities-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
 }
 
 .card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 2px solid #ccc;
-    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 2px solid #ccc;
+	box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
 
-    flex: 1 1 20%;
-    min-width: 350px;
-    max-width: 350px;
-    height: max-content;
-    border-radius: 4px;
-    padding: 1em;
-    margin: 1em 0.5em;
+	flex: 1 1 20%;
+	min-width: 350px;
+	max-width: 350px;
+	height: max-content;
+	border-radius: 4px;
+	padding: 1em;
+	margin: 1em 0.5em;
 }
 
 .info-wrapper {
-    width: 70%;
+	width: 70%;
 }
 
-.info-wrapper>h3 {
-    padding-bottom: 0.5em;
-    width: auto;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.info-wrapper > h3 {
+	padding-bottom: 0.5em;
+	width: auto;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .actions-wrapper {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
-.actions-wrapper>button {
-    display: grid;
-    place-content: center;
-    padding: 0.5em;
-    margin: 0.1em;
+.actions-wrapper > button {
+	display: grid;
+	place-content: center;
+	padding: 0.5em;
+	margin: 0.1em;
 }
-
 
 .modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: grid;
-    place-content: center;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: grid;
+	place-content: center;
 }
 
 [hidden] {
-    /* Using display: grid; overrides the hidden attribute */
-    display: none;
+	/* Using display: grid; overrides the hidden attribute */
+	display: none;
 }
 
 .modal-content {
-    background-color: #fefefe;
-    width: 40vw;
-    padding: 1em;
+	background-color: #fefefe;
+	width: 40vw;
+	padding: 1em;
 }
 
-.modal-content>header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid black;
-    padding-bottom: 1em;
+.modal-content > header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid black;
+	padding-bottom: 1em;
 }
 
-.modal-content>header>button {
-    display: grid;
-    place-content: center;
-    border: none;
-    padding: 0;
+.modal-content > header > button {
+	display: grid;
+	place-content: center;
+	border: none;
+	padding: 0;
 }
 
-.modal-content>main {
-    padding-block: 1em;
+.modal-content > main {
+	padding-block: 1em;
 }
 
-#edit-form>*:not(label, [type=submit]) {
-    display: block;
-    margin-bottom: 20px;
+#edit-form > *:not(label, [type='submit']) {
+	display: block;
+	margin-bottom: 20px;
 }
 
-#edit-form>label {
-    margin-bottom: 5px;
-    display: inline-block;
+#edit-form > label {
+	margin-bottom: 5px;
+	display: inline-block;
 }
 
 .delete-warning {
-    text-align: center;
+	text-align: center;
 }
 
-.modal-content>footer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.modal-content > footer {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
 }
 
-.modal-content>footer>button:first-of-type {
-    margin-right: 1em;
+.modal-content > footer > button:first-of-type {
+	margin-right: 1em;
 }
 
 .invalid-input {
-    outline: 2px solid #f00 !important;
+	outline: 2px solid #f00 !important;
 }
 
-.required-icon, .fail {
-    color: #f00;
+.required-icon,
+.fail {
+	color: #f00;
 }
 
 .success {
-    color: #008a00;
+	color: #008a00;
 }
 
 @media only screen and (max-width: 950px) {
-    body {
-        display: initial;
-    }
-    
-    body>section:first-of-type {
-        position: initial;
-        width: 100%;
-        height: auto;
-        border-right: none;
-    }
+	body {
+		display: initial;
+	}
 
-    #add-form {
-        padding-bottom: 1em;
-    }
-    
-    body>section:last-of-type {
-        width: 100%;
-        margin-left: 0;
-    }
+	body > section:first-of-type {
+		position: initial;
+		width: 100%;
+		height: auto;
+		border-right: none;
+	}
 
-    #cities-container {
-        justify-content: center;
-    }
+	#add-form {
+		padding-bottom: 1em;
+	}
 
-    .card {
-        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
-    }
+	body > section:last-of-type {
+		width: 100%;
+		margin-left: 0;
+	}
 
-    .modal-content {
-        width: 90vw;
-    }
-  }
+	#cities-container {
+		justify-content: center;
+	}
+
+	.card {
+		box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+	}
+
+	.modal-content {
+		width: 90vw;
+	}
+}
