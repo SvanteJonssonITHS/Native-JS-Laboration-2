@@ -55,3 +55,10 @@ getBorderingCountries = async (codes) => {
 	return countries
 }
 
+getWorldGiniAverage = async () => {
+	const response = await fetch(`https://restcountries.com/v3.1/all?fields=gini`)
+	const result = await response.json()
+	const countriesWithGini = result.filter((country) => Object.values(country.gini)[0])
+	const average = countriesWithGini.reduce((total, country) => total + Object.values(country.gini)[0], 0) / countriesWithGini.length
+	return Math.round((average + Number.EPSILON) * 100) / 100
+}
