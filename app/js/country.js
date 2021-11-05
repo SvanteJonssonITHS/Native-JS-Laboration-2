@@ -1,3 +1,11 @@
+/*
+API endpoints with usefull data
+https://restcountries.com/v3.1/name/{ name }                            | Short info to put in a table 
+https://restcountries.com/v3.1/alpha?codes={ code },{ code },{ code }   | Can be used to find bordering countries and their capital
+https://api.teleport.org/api/urban_areas/slug:{ city }/details/         | A lot of information that can be displayed in a chart or similar
+https://api.teleport.org/api/urban_areas/slug:{ city }/scores/          | One field has a short summary of the city. Could be interesting to show
+*/
+
 const _query = sessionStorage.getItem('country')
 
 let _country
@@ -46,7 +54,7 @@ createMainContent = async (country, borderingCountries) => {
 	const summaryTitle = document.createElement('h2')
 	summaryTitle.textContent = 'Summary'
 	const summaryText = document.createElement('p')
-	summaryText.textContent = Object.values(await generateSummary(country, borderingCountries)).join(' ')
+	summaryText.innerHTML = Object.values(await generateSummary(country, borderingCountries)).join(' ')
 	summary.append(summaryTitle, summaryText)
 }
 
