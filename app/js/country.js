@@ -1,11 +1,14 @@
 const _query = sessionStorage.getItem('country')
 
 let _country
+let _borderingCountries
 
 window.onload = async () => {
 	if (!_query) window.location = './index.html'
 	_country = await getCountry(_query)
-	if (_country) createCountryOverview(_country)
+	if (_country) {
+		createCountryOverview(_country)
+		if (_country.borders) _borderingCountries = await getBorderingCountries(_country.borders)
 }
 
 getCountry = async (name) => {
@@ -34,3 +37,9 @@ createCountryOverview = (country) => {
 	// Info section
 	createTable(country)
 }
+getBorderingCountries = async (codes) => {
+	const response = await fetch(`https://restcountries.com/v3.1/alpha?codes=${codes}&fields=name,gini`)
+	const countries = await response.json()
+	return countries
+}
+
