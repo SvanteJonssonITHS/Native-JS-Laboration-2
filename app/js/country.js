@@ -9,6 +9,8 @@ window.onload = async () => {
 	if (_country) {
 		createCountryOverview(_country)
 		if (_country.borders) _borderingCountries = await getBorderingCountries(_country.borders)
+		if (_borderingCountries) createMainContent(_country, _borderingCountries)
+	}
 }
 
 getCountry = async (name) => {
@@ -37,6 +39,16 @@ createCountryOverview = (country) => {
 	// Info section
 	createTable(country)
 }
+
+createMainContent = async (country, borderingCountries) => {
+	// Capital summary section
+	const summary = document.querySelector('.capital-summary')
+	const summaryTitle = document.createElement('h2')
+	summaryTitle.textContent = 'Summary'
+	const summaryText = document.createElement('p')
+	summary.append(summaryTitle, summaryText)
+}
+
 getBorderingCountries = async (codes) => {
 	const response = await fetch(`https://restcountries.com/v3.1/alpha?codes=${codes}&fields=name,gini`)
 	const countries = await response.json()
