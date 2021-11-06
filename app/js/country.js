@@ -105,7 +105,7 @@ generateSummary = async (country, borderingCountries) => {
 	if (country.gini) {
 		const giniWorldAverage = await getWorldGiniAverage()
 		let aboveWorldAverage
-		switch (country.gini > giniWorldAverage) {
+		switch (Object.values(country.gini)[0] > giniWorldAverage) {
 			case true:
 				aboveWorldAverage = 'above'
 				break
