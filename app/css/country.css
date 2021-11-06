@@ -83,6 +83,31 @@ body {
 	height: 150px;
 }
 
+}
+
+.info-list {
+	list-style: none;
+	border-top: 1px solid #ccc;
+}
+
+.info-list > li {
+	width: 100%;
+	padding-block: 0.5em;
+	border-bottom: 1px solid #ccc;
+	display: flex;
+	justify-content: space-between;
+}
+
+.info-list p {
+	width: 50%;
+	font-size: 0.9em;
+	overflow: hidden;
+}
+
+.info-list p:first-of-type {
+	font-weight: 500;
+}
+
 .main {
 	flex: 4 1 auto;
 }
