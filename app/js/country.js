@@ -143,7 +143,7 @@ createMainContent = async (country) => {
 	// Population comparison chart
 	countryPopulationComparedChart(country)
 	// Gini comparison chart
-	countryGiniComparedChart(country)
+	if (country.gini && Object.values(country.gini).length > 0) countryGiniComparedChart(country)
 }
 
 generateSummary = async (country) => {
