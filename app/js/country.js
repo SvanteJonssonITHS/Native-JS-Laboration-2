@@ -48,7 +48,7 @@ createCountryOverview = (country) => {
 	}
 	identity.append(commonName, officialName, symbols)
 	// Region section
-	createMap(country.cca3, country.latlng[0], country.latlng[1])
+	if (country.cca3 || (country.latlng[0] && country.latlng[1])) createMap(country.cca3, country.latlng[0], country.latlng[1])
 	// Info section
 	createInfoList(country)
 }
