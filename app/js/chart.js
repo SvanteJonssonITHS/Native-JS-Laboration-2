@@ -1,3 +1,7 @@
+/**
+ * Creates a chart comparing countries population size
+ * @param  {Object} country
+ */
 countryPopulationComparedChart = async (country) => {
 	const config = {
 		type: 'bar',
@@ -15,6 +19,10 @@ countryPopulationComparedChart = async (country) => {
 	const populationComparedChart = new Chart(ctx, config)
 }
 
+/**
+ * Prepares the data object required for chart creation
+ * @param  {Object} country
+ */
 preparePopulationComparedData = async (country) => {
 	let data = {
 		labels: [],
@@ -35,7 +43,10 @@ preparePopulationComparedData = async (country) => {
 	})
 	return data
 }
-
+/**
+ * Creates a chart comparing countries Gini index
+ * @param  {Object} country
+ */
 countryGiniComparedChart = async (country) => {
 	const config = {
 		type: 'bar',
@@ -59,7 +70,10 @@ countryGiniComparedChart = async (country) => {
 	const ctx = document.querySelector('#country-gini-chart').getContext('2d')
 	const giniComparedChart = new Chart(ctx, config)
 }
-
+/**
+ * Prepares the data object required for chart creation
+ * @param  {Object} country
+ */
 prepareCountryGiniComparedData = async (country) => {
 	let data = {
 		labels: [],
