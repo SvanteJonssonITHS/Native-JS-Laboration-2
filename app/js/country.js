@@ -37,10 +37,15 @@ createCountryOverview = (country) => {
 	const symbols = document.createElement('div')
 	symbols.setAttribute('class', 'national-symbols-wrapper')
 	const flagWrapper = document.createElement('div')
-	flagWrapper.innerHTML = `<img src="${country.flags.svg}" alt="${country.name.common} flag" height="100%">`
 	const coaWrapper = document.createElement('div')
-	coaWrapper.innerHTML = `<img src="${country.coatOfArms.svg}" alt="${country.name.common} coat of arms" height="100%">`
-	symbols.append(flagWrapper, coaWrapper)
+	if (country.flags) {
+		flagWrapper.innerHTML = `<img src="${country.flags.svg}" alt="${country.name.common} flag" height="100%">`
+		symbols.append(flagWrapper)
+	}
+	if (country.coatOfArms && Object.values(country.coatOfArms).length > 0) {
+		coaWrapper.innerHTML = `<img src="${country.coatOfArms.svg}" alt="${country.name.common} coat of arms" height="100%">`
+		symbols.append(coaWrapper)
+	}
 	identity.append(commonName, officialName, symbols)
 	// Region section
 	createMap(country.cca3, country.latlng[0], country.latlng[1])
