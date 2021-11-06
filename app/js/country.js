@@ -45,7 +45,6 @@ createCountryOverview = (country) => {
 	// Region section
 	createMap(country.cca3, country.latlng[0], country.latlng[1])
 	// Info section
-	createTable(country)
 }
 
 createMainContent = async (country) => {
