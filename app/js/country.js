@@ -148,3 +148,11 @@ getWorldGiniAverage = async () => {
 	const average = countriesWithGini.reduce((total, country) => total + Object.values(country.gini)[0], 0) / countriesWithGini.length
 	return Math.round((average + Number.EPSILON) * 100) / 100
 }
+
+getContinentTopPopulaitons = async (name, continent) => {
+	const response = await fetch(`https://restcountries.com/v3.1/all?fields=name,population,continents`)
+	const result = await response.json()
+	const countriesInRightContinent = result.filter((country) => country.continents[0] === continent && country.name.common !== name)
+	countriesInRightContinent.sort((a, b) => b.population - a.population)
+	return countriesInRightContinent.slice(0, 5)
+}
