@@ -56,6 +56,8 @@ createMainContent = async (country) => {
 	const summaryText = document.createElement('p')
 	summaryText.innerHTML = Object.values(await generateSummary(country)).join(' ')
 	summary.append(summaryTitle, summaryText)
+	// Population comparison chart
+	countryPopulationComparedChart(country)
 }
 
 generateSummary = async (country) => {
