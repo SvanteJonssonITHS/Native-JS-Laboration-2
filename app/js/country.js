@@ -45,6 +45,86 @@ createCountryOverview = (country) => {
 	// Region section
 	createMap(country.cca3, country.latlng[0], country.latlng[1])
 	// Info section
+	createInfoList(country)
+}
+
+createInfoList = (country) => {
+	console.log(country)
+	const infoWrapper = document.querySelector('.info-wrapper')
+
+	const infoList = document.createElement('ul')
+	infoList.setAttribute('class', 'info-list')
+
+	if (country.continents && country.continents.length > 0) {
+		infoList.append(createInfoItem('Continent', country.continents))
+	}
+	if (country.area && country.area > 0) {
+		infoList.append(createInfoItem('Area', [`${Intl.NumberFormat().format(country.area)} km²`]))
+	}
+	if (country.capital && country.capital.length > 0) {
+		infoList.append(createInfoItem('Capital', country.capital))
+	}
+	if (country.languages && Object.values(country.languages).length > 0) {
+		infoList.append(createInfoItem('Languages', Object.values(country.languages)))
+	}
+	if (country.demonyms.eng && Object.values(country.demonyms.eng).length > 0) {
+		let denonyms = Object.values(country.demonyms.eng)
+		denonyms = denonyms.filter((instance, index, array) => index === array.findIndex((i) => instance === i))
+		infoList.append(createInfoItem('Denonyms', denonyms))
+	}
+	if (country.currencies && Object.values(country.currencies).length > 0) {
+		console.log(Object.values(country.currencies))
+		let currencies = []
+		Object.values(country.currencies).forEach((currency) => {
+			currencies.push(`${currency.name} (${currency.symbol})`)
+		})
+		infoList.append(createInfoItem('Currency', currencies))
+	}
+	if (country.gini && Object.values(country.gini).length > 0) {
+		console.log(Object.values(country.gini))
+		infoList.append(createInfoItem('Gini', Object.values(country.gini)))
+	}
+	if (country.unMember) {
+		infoList.append(createInfoItem('UN member', ['Yes']))
+	} else {
+		infoList.append(createInfoItem('UN member', ['No']))
+	}
+	if (country.car.side && country.car.side.length > 0) {
+		infoList.append(createInfoItem('Driving side', [country.car.side]))
+	}
+	if (country.cca3 && country.cca3.length > 0) {
+		infoList.append(createInfoItem('ISO 3166', [country.cca3]))
+	}
+	if (country.tld && country.tld.length > 0) {
+		infoList.append(createInfoItem('Top domain', country.tld))
+	}
+	if (country.idd && Object.values(country.idd).length > 0) {
+		let idd = []
+		if (country.idd.suffixes.length > 1) {
+			idd.push(country.idd.root)
+		} else {
+			idd.push(country.idd.root + country.idd.suffixes[0])
+		}
+		infoList.append(createInfoItem('International Prefix', idd))
+	}
+	infoWrapper.append(infoList)
+}
+
+createInfoItem = (title, values) => {
+	if (!title && !values) return false
+	const item = document.createElement('li'),
+		titleElement = document.createElement('p'),
+		valuesElement = document.createElement('p')
+
+	titleElement.textContent = title
+	titleElement.title = title
+	values.forEach((value) => {
+		valuesElement.innerHTML += `${value}<br/>`
+		valuesElement.title += `${value}, `
+	})
+	valuesElement.title = valuesElement.title.slice(0, -2)
+	item.append(titleElement, valuesElement)
+	return item
 }
 
 createMainContent = async (country) => {
