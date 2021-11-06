@@ -1,3 +1,9 @@
+/**
+ * Creates a world map
+ * @param  {string} cca3
+ * @param  {number} lat
+ * @param  {numnber} lng
+ */
 createMap = (cca3, lat, lng) => {
 	const mapStyle = new ol.style.Style({
 		fill: new ol.style.Fill({
@@ -53,10 +59,15 @@ createMap = (cca3, lat, lng) => {
 		}
 	})
 }
-
-highlightCountry = (featureOverlay, vectorLayer, cioc) => {
+/**
+ * Highlights the specified country on the world map
+ * @param  {OpenLayers VectorLayer} featureOverlay
+ * @param  {OpenLayers VectorLayer} vectorLayer
+ * @param  {string} cca3
+ */
+highlightCountry = (featureOverlay, vectorLayer, cca3) => {
 	let highlight
-	const feature = vectorLayer.getSource().getFeatureById(cioc)
+	const feature = vectorLayer.getSource().getFeatureById(cca3)
 	if (highlight) {
 		featureOverlay.getSource().removeFeature(highlight)
 	}
@@ -65,9 +76,14 @@ highlightCountry = (featureOverlay, vectorLayer, cioc) => {
 	}
 	highlight = feature
 }
-
-centerCountry = (map, vectorLayer, cioc) => {
-	const feature = vectorLayer.getSource().getFeatureById(cioc)
+/**
+ * Centers the viewport on the specified country
+ * @param  {OpenLayers Map} map
+ * @param  {OpenLayers VectorLayer} vectorLayer
+ * @param  {string} cca3
+ */
+centerCountry = (map, vectorLayer, cca3) => {
+	const feature = vectorLayer.getSource().getFeatureById(cca3)
 	if (feature) {
 		const extent = feature.getGeometry().getExtent()
 		map.getView().fit(extent)
