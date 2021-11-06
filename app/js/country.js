@@ -58,6 +58,8 @@ createMainContent = async (country) => {
 	summary.append(summaryTitle, summaryText)
 	// Population comparison chart
 	countryPopulationComparedChart(country)
+	// Gini comparison chart
+	countryGiniComparedChart(country)
 }
 
 generateSummary = async (country) => {
