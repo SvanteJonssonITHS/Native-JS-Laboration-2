@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Site Info -->
-    <title>OnlyCountries</title>
-    <meta name="description" content="One site, only countries. Perfect!">
-    <meta name="author" content="Svante Jonsson">
+		<!-- Site Info -->
+		<title>OnlyCountries</title>
+		<meta name="description" content="One site, only countries. Perfect!" />
+		<meta name="author" content="Svante Jonsson" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/index.css">
+		<!-- CSS -->
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/index.css" />
 
-    <!-- JS -->
-    <script src="./js/index.js" defer></script>
-</head>
-<body>
-    <main>
-        <section class="search-wrapper">
-            <div class="identity-wrapper">
-                <img src="./images/earth.svg" alt="Logo">
-                <h1>OnlyCountries</h1>
-            </div>
-            <form>
-                <div class="search-bar-wrapper">
-                    <input type="text" class="search-bar" placeholder="Search for a country">
-                    <div id="predictions-wrapper"></div>
-                </div>
-                <input type="submit" hidden>
-            </form>
-        </section>
-        <section class="recent-wrapper">
-            <h2>Recent searches:</h2>
-            <ul class="recent-list">
-            </ul>
-        </section>
-    </main>
-</body>
+		<!-- JS -->
+		<script src="./js/index.js" defer></script>
+	</head>
+	<body>
+		<a href="./cities/index.html">Cities</a>
+		<main>
+			<section class="search-wrapper">
+				<div class="identity-wrapper">
+					<img src="./images/earth.svg" alt="Logo" />
+					<h1>OnlyCountries</h1>
+				</div>
+				<form>
+					<div class="search-bar-wrapper">
+						<input type="text" class="search-bar" placeholder="Search for a country" />
+						<div id="predictions-wrapper"></div>
+					</div>
+					<input type="submit" hidden />
+				</form>
+			</section>
+			<section class="recent-wrapper">
+				<h2>Recent searches:</h2>
+				<ul class="recent-list"></ul>
+			</section>
+		</main>
+	</body>
 </html>
