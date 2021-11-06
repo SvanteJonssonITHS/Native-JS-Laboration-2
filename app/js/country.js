@@ -113,7 +113,7 @@ generateSummary = async (country, borderingCountries) => {
 				aboveWorldAverage = 'below'
 				break
 		}
-		summary.economy = `The country's distrubution of income among its citizens(Gini index, lower is better) is, ${Object.values(country.gini)[0]}, and is ${aboveWorldAverage} the world average of ${giniWorldAverage}.`
+		summary.economy = `The country's distribution of income among its citizens(Gini index, lower is better) is ${Object.values(country.gini)[0]} and is ${aboveWorldAverage} the world average of ${giniWorldAverage}.`
 	}
 
 	// Traffic sentence
