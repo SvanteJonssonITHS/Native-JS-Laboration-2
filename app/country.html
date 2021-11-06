@@ -24,8 +24,10 @@
 		<script src="./js/country.js" defer></script>
 	</head>
 	<body>
-		<div class="sidebar">
+		<header>
 			<a href="./index.html" class="back-btn"><span class="material-icons">arrow_back</span>Search</a>
+		</header>
+		<div class="sidebar">
 			<article class="quick-overview">
 				<section class="country-identity"></section>
 				<section class="region-wrapper"><div id="map"></div></section>
@@ -33,9 +35,13 @@
 			</article>
 		</div>
 		<div class="main">
-			<section class="capital-summary"></section>
-			<section><canvas id="country-population-chart" width="100" height="100"></canvas></section>
-			<section><canvas id="country-gini-chart" width="400" height="400"></canvas></section>
+			<div>
+				<section class="capital-summary"></section>
+				<canvas id="country-population-chart"></canvas>
+			</div>
+			<div>
+				<canvas id="country-gini-chart"></canvas>
+			</div>
 		</div>
 	</body>
 </html>
