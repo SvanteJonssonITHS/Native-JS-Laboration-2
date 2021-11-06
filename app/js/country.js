@@ -17,7 +17,7 @@ window.onload = async () => {
 	if (_country) {
 		createCountryOverview(_country)
 		if (_country.borders) _borderingCountries = await getBorderingCountries(_country.borders)
-		if (_borderingCountries) createMainContent(_country, _borderingCountries)
+		createMainContent(_country)
 	}
 }
 
@@ -48,25 +48,24 @@ createCountryOverview = (country) => {
 	createTable(country)
 }
 
-createMainContent = async (country, borderingCountries) => {
+createMainContent = async (country) => {
 	// Capital summary section
 	const summary = document.querySelector('.capital-summary')
 	const summaryTitle = document.createElement('h2')
 	summaryTitle.textContent = 'Summary'
 	const summaryText = document.createElement('p')
-	summaryText.innerHTML = Object.values(await generateSummary(country, borderingCountries)).join(' ')
+	summaryText.innerHTML = Object.values(await generateSummary(country)).join(' ')
 	summary.append(summaryTitle, summaryText)
 }
 
-generateSummary = async (country, borderingCountries) => {
+generateSummary = async (country) => {
 	let summary = {}
 
 	// Location sentence
 	if (country.name.common && country.continents[0].length > 0) {
-		summary.location = `${country.name.common} is a country located in ${country.continents[0]}`
+		summary.location = `${country.name.common} is a country located in ${country.continents[0]}  and shares borders with `
 		if (country.borders && country.borders.length > 0) {
-			summary.location += ` and shares borders with `
-			const borders = borderingCountries.map(({ name }) => name.common)
+			let borders = _borderingCountries.map(({ name }) => name.common)
 			if (borders.length > 3) {
 				summary.location += `${borders[0]}, ${borders[1]} and ${borders[2]} among others.`
 			} else if (borders.length == 3) {
@@ -77,7 +76,7 @@ generateSummary = async (country, borderingCountries) => {
 				summary.location += `${borders[0]}.`
 			}
 		} else {
-			summary.location += '.'
+			summary.location += 'no other countries.'
 		}
 	}
 
