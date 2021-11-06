@@ -54,7 +54,6 @@ createCountryOverview = (country) => {
 }
 
 createInfoList = (country) => {
-	console.log(country)
 	const infoWrapper = document.querySelector('.info-wrapper')
 
 	const infoList = document.createElement('ul')
@@ -78,7 +77,6 @@ createInfoList = (country) => {
 		infoList.append(createInfoItem('Denonyms', denonyms))
 	}
 	if (country.currencies && Object.values(country.currencies).length > 0) {
-		console.log(Object.values(country.currencies))
 		let currencies = []
 		Object.values(country.currencies).forEach((currency) => {
 			currencies.push(`${currency.name} (${currency.symbol})`)
@@ -86,7 +84,6 @@ createInfoList = (country) => {
 		infoList.append(createInfoItem('Currency', currencies))
 	}
 	if (country.gini && Object.values(country.gini).length > 0) {
-		console.log(Object.values(country.gini))
 		infoList.append(createInfoItem('Gini', Object.values(country.gini)))
 	}
 	if (country.unMember) {
