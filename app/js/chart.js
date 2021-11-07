@@ -11,6 +11,10 @@ countryPopulationComparedChart = async (country) => {
 			plugins: {
 				legend: {
 					display: false
+				},
+				title: {
+					display: true,
+					text: `${country.continents[0]}'s largest populations`
 				}
 			}
 		}
@@ -57,6 +61,14 @@ countryGiniComparedChart = async (country) => {
 			plugins: {
 				legend: {
 					display: false
+				},
+				title: {
+					display: true,
+					text: `Gini index, ${country.name.common} and bordering countries vs. World average`
+				},
+				subtitle: {
+					display: true,
+					text: 'Lower is better'
 				}
 			},
 			scales: {
