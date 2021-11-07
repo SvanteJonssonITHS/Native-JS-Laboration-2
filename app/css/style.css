@@ -3,9 +3,28 @@
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Ubuntu', sans-serif;
-    scroll-behavior: smooth;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Ubuntu', sans-serif;
+	scroll-behavior: smooth;
+}
+
+:root {
+	/* Dark theme colors */
+	--bg-dark: #121212;
+	--overlay-1-dark: #1e1e1e;
+	--overlay-1-hover-dark: #2e2e2e;
+	--overlay-2-dark: #464646;
+	--shadow-dark: rgba(0, 0, 0, 0.25);
+	--text-dark: #fff;
+
+	/* Light theme colors */
+	--bg-light: #fff;
+	--overlay-1-light: rgb(220, 220, 220);
+	--overlay-1-hover-light: #dbdbdc;
+	--overlay-2-light: #c8c8c8;
+	--shadow-light: rgba(0, 0, 0, 0.5);
+	--text-light: #000;
+	--outline-light: #c8c8c8;
 }
