@@ -153,12 +153,14 @@ header {
 #country-population-chart {
 	max-width: 45%;
 	max-height: 350px;
+	box-shadow: 0 2px 15px var(--shadow-light);
 }
 
 #country-gini-chart {
 	max-width: 60%;
 	max-height: 250px;
 	margin-left: 2em;
+	box-shadow: 0 2px 15px var(--shadow-light);
 }
 
 @media only screen and (max-width: 850px) {
@@ -293,9 +295,11 @@ header {
 
 	#country-population-chart {
 		background-color: var(--overlay-1-dark);
+		box-shadow: 0 2px 15px var(--shadow-dark);
 	}
 
 	#country-gini-chart {
 		background-color: var(--overlay-1-dark);
+		box-shadow: 0 2px 15px var(--shadow-dark);
 	}
 }
