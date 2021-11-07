@@ -4,21 +4,25 @@ body {
 }
 
 header {
-	width: 100%;
-	padding: 0.5em;
+	width: 20%;
+	margin-right: 80%;
+	display: flex;
+	padding-block: 0.5em;
+	justify-content: center;
+	align-items: center;
 }
 
 .back-btn {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0.5em 1em;
-	width: 150px;
+	padding: 0.5em 0.5em;
+	width: 95%;
 	height: 40px;
-	border: 2px solid blueviolet;
-	border-radius: 5em;
+	border-radius: 7px;
 	text-decoration: none;
-	color: blueviolet;
+	color: var(--text-light);
+	background-color: var(--overlay-1-light);
 	font-size: 100%;
 	font-weight: 500;
 	transition: all 150ms;
@@ -51,7 +55,7 @@ header {
 	width: 95%;
 	padding: 1em;
 	border-radius: 7px;
-	background-color: #e4e4e2;
+	background-color: var(--overlay-1-light);
 }
 
 .country-identity {
