@@ -21,6 +21,7 @@
 	--overlay-2-dark: #464646;
 	--shadow-dark: rgba(0, 0, 0, 0.25);
 	--text-dark: #fff;
+	--subtitle-dark: rgb(200, 200, 200);
 
 	/* Light theme colors */
 	--bg-light: #fff;
@@ -29,5 +30,6 @@
 	--overlay-2-light: #c8c8c8;
 	--shadow-light: rgba(0, 0, 0, 0.5);
 	--text-light: #000;
+	--subtitle-light: rgb(75, 75, 75);
 	--outline-light: #c8c8c8;
 }
