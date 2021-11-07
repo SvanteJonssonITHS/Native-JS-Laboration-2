@@ -152,6 +152,7 @@ header {
 #country-gini-chart {
 	max-width: 60%;
 	max-height: 250px;
+	margin-left: 2em;
 }
 
 @media only screen and (max-width: 850px) {
@@ -168,6 +169,7 @@ header {
 	}
 	#country-gini-chart {
 		max-width: 90%;
+		margin-left: 1em;
 	}
 }
 
@@ -221,5 +223,6 @@ header {
 	}
 	#country-gini-chart {
 		max-width: 95%;
+		margin-left: 0;
 	}
 }
