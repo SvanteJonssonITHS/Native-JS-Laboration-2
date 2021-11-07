@@ -11,6 +11,9 @@
 }
 
 :root {
+	--primary-color: #6200ee;
+	--primary-color-variant: #3700b3;
+
 	/* Dark theme colors */
 	--bg-dark: #121212;
 	--overlay-1-dark: #1e1e1e;

@@ -39,6 +39,7 @@ main {
 .identity-wrapper > h1 {
 	font-size: 50px;
 	padding-left: 2.5%;
+	color: var(--primary-color-variant);
 }
 
 .search-bar {
@@ -234,6 +235,10 @@ main {
 	body {
 		background-color: var(--bg-dark);
 		color: var(--text-dark);
+	}
+
+	.identity-wrapper > h1 {
+		color: var(--primary-color);
 	}
 
 	.search-bar {
