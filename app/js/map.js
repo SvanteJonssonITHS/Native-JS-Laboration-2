@@ -59,6 +59,7 @@ createMap = (cca3, lat, lng) => {
 		}
 	})
 }
+
 /**
  * Highlights the specified country on the world map
  * @param  {OpenLayers VectorLayer} featureOverlay
@@ -76,6 +77,7 @@ highlightCountry = (featureOverlay, vectorLayer, cca3) => {
 	}
 	highlight = feature
 }
+
 /**
  * Centers the viewport on the specified country
  * @param  {OpenLayers Map} map

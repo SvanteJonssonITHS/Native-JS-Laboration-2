@@ -47,6 +47,7 @@ preparePopulationComparedData = async (country) => {
 	})
 	return data
 }
+
 /**
  * Creates a chart comparing countries Gini index
  * @param  {Object} country
@@ -82,6 +83,7 @@ countryGiniComparedChart = async (country) => {
 	const ctx = document.querySelector('#country-gini-chart').getContext('2d')
 	const giniComparedChart = new Chart(ctx, config)
 }
+
 /**
  * Prepares the data object required for chart creation
  * @param  {Object} country
