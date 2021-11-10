@@ -12,11 +12,18 @@ window.onload = async () => {
 	showRecentSearches(localStorage.getItem('recent'))
 }
 
+/**
+ * Retrieves all country names from the API
+ */
 getAllCountryNames = async () => {
 	const response = await fetch('https://restcountries.com/v3.1/all?fields=name,altSpellings')
 	return await response.json()
 }
 
+/**
+ * Prepares the wanted names for the prediction list, saves them in local storage to improve performance
+ * @param  {Object} countries
+ */
 prepareNameArray = (countries) => {
 	let allcoutries = JSON.parse(localStorage.getItem('allcoutries')) || []
 	if (allcoutries.length == 0) {
@@ -46,11 +53,19 @@ prepareNameArray = (countries) => {
 	return allcoutries
 }
 
+/**
+ * Changes the display rule for the predictions container to block
+ * @param  {Element} element
+ */
 openPredictionList = (element) => {
 	element.style.display = 'block'
 	_query.classList.add('search-bar-predictions')
 }
 
+/**
+ * CHanges the display rule for the predictions container to none and clears it
+ * @param  {Element} element
+ */
 closePredictionList = (element) => {
 	element.innerHTML = ''
 	element.style.display = 'none'
@@ -58,6 +73,11 @@ closePredictionList = (element) => {
 	_activePrediction = -1
 }
 
+/**
+ * Creates a DOM element containing a prediction
+ * @param  {string} prediction
+ * @param  {string} query
+ */
 createPrediction = (prediction, query) => {
 	const element = document.createElement('div')
 	element.setAttribute('class', 'prediction')
@@ -72,6 +92,10 @@ createPrediction = (prediction, query) => {
 	return element
 }
 
+/**
+ * Changes the active prediction by one, either 'up' or 'down', depending on the parameter direction
+ * @param  {string} direction
+ */
 changeActivePrediction = (direction) => {
 	const predicitons = document.querySelectorAll('.prediction')
 	for (let i = 0; i < predicitons.length; i++) {
@@ -139,6 +163,9 @@ document.addEventListener('mousedown', function () {
 	}
 })
 
+/**
+ * Performs the submit event in different orders depending on the _activePrediction variable
+ */
 handleSubmit = () => {
 	if (_activePrediction == -1) {
 		searchCountry()
@@ -148,6 +175,9 @@ handleSubmit = () => {
 	}
 }
 
+/**
+ * Compares saved countries to user query, if a match is found the query is saved in local storage and the user is redirected
+ */
 searchCountry = async () => {
 	let query = _query.value.toLowerCase()
 	let name
@@ -188,17 +218,29 @@ searchCountry = async () => {
 	saveAndRedirect(name)
 }
 
+/**
+ * saves parameter country to session storage and redirects user to country.html
+ * @param  {string} country
+ */
 saveAndRedirect = (country) => {
 	sessionStorage.setItem('country', country)
 	window.location = `./country.html`
 }
 
+/**
+ * Retrieves one countries flag from the API
+ * @param  {string} name
+ */
 getCountryFlag = async (name) => {
 	const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fields=flags`)
 	const flag = await response.json()
 	return flag[0].flags.svg
 }
 
+/**
+ * Creates a DOM element containing for displaying the parameter object
+ * @param  {Object} country
+ */
 createRecentSearchCard = (country) => {
 	const li = document.createElement('li')
 
@@ -224,6 +266,10 @@ createRecentSearchCard = (country) => {
 	return li
 }
 
+/**
+ * Creates and displays recent searches in the DOM if there is any saved in local storage
+ * @param  {array} recentSearches
+ */
 showRecentSearches = (recentSearches) => {
 	if (recentSearches && recentSearches.length > 0) {
 		_recentWrapper.style.display = 'block'
