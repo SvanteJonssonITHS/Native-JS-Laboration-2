@@ -1,11 +1,3 @@
-/*
-API endpoints with usefull data
-https://restcountries.com/v3.1/name/{ name }                            | Short info to put in a table 
-https://restcountries.com/v3.1/alpha?codes={ code },{ code },{ code }   | Can be used to find bordering countries and their capital
-https://api.teleport.org/api/urban_areas/slug:{ city }/details/         | A lot of information that can be displayed in a chart or similar
-https://api.teleport.org/api/urban_areas/slug:{ city }/scores/          | One field has a short summary of the city. Could be interesting to show
-*/
-
 const _query = sessionStorage.getItem('country')
 
 let _country
@@ -21,12 +13,20 @@ window.onload = async () => {
 	}
 }
 
+/**
+ * Retrieves one country by name from the API
+ * @param  {string} name
+ */
 getCountry = async (name) => {
 	const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
 	const country = await response.json()
 	return country[0]
 }
 
+/**
+ * Creates a DOM element to display the parameters data
+ * @param  {Object} country
+ */
 createCountryOverview = (country) => {
 	// Country identity section
 	const identity = document.querySelector('.country-identity')
@@ -53,6 +53,10 @@ createCountryOverview = (country) => {
 	createInfoList(country)
 }
 
+/**
+ * Creates a DOM list used to display object data
+ * @param  {Object} country
+ */
 createInfoList = (country) => {
 	const infoWrapper = document.querySelector('.info-wrapper')
 
@@ -112,6 +116,11 @@ createInfoList = (country) => {
 	infoWrapper.append(infoList)
 }
 
+/**
+ * Creates one list item with the contents from the parameters
+ * @param  {string} title
+ * @param  {array} values
+ */
 createInfoItem = (title, values) => {
 	if (!title && !values) return false
 	const item = document.createElement('li'),
@@ -129,6 +138,10 @@ createInfoItem = (title, values) => {
 	return item
 }
 
+/**
+ * Creates the main content of the page
+ * @param  {Object} country
+ */
 createMainContent = async (country) => {
 	// Capital summary section
 	const summary = document.querySelector('.capital-summary')
@@ -143,6 +156,10 @@ createMainContent = async (country) => {
 	if (country.gini && Object.values(country.gini).length > 0) countryGiniComparedChart(country)
 }
 
+/**
+ * Creates sentences based on parameter objects data
+ * @param  {Object} country
+ */
 generateSummary = async (country) => {
 	let summary = {}
 
@@ -220,12 +237,19 @@ generateSummary = async (country) => {
 	return summary
 }
 
+/**
+ * Retrieves countries based on ISO codes from the API
+ * @param  {array} codes
+ */
 getBorderingCountries = async (codes) => {
 	const response = await fetch(`https://restcountries.com/v3.1/alpha?codes=${codes}&fields=name,gini`)
 	const countries = await response.json()
 	return countries
 }
 
+/**
+ * Returns the average gini value from all API countries
+ */
 getWorldGiniAverage = async () => {
 	const response = await fetch(`https://restcountries.com/v3.1/all?fields=gini`)
 	const result = await response.json()
@@ -234,6 +258,11 @@ getWorldGiniAverage = async () => {
 	return Math.round((average + Number.EPSILON) * 100) / 100
 }
 
+/**
+ * Returns the five biggest populations from a continent, not including the one with the same name as the parameter name
+ * @param  {string} name
+ * @param  {string} continent
+ */
 getContinentTopPopulaitons = async (name, continent) => {
 	const response = await fetch(`https://restcountries.com/v3.1/all?fields=name,population,continents`)
 	const result = await response.json()
