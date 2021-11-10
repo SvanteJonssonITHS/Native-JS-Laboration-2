@@ -19,17 +19,17 @@
 	--overlay-1-dark: #1e1e1e;
 	--overlay-1-hover-dark: #2e2e2e;
 	--overlay-2-dark: #464646;
-	--shadow-dark: rgba(0, 0, 0, 0.25);
+	--shadow-dark: #00000040;
 	--text-dark: #fff;
-	--subtitle-dark: rgb(200, 200, 200);
+	--subtitle-dark: #c8c8c8;
 
 	/* Light theme colors */
 	--bg-light: #fff;
-	--overlay-1-light: rgb(220, 220, 220);
+	--overlay-1-light: #dcdcdc;
 	--overlay-1-hover-light: #dbdbdc;
 	--overlay-2-light: #c8c8c8;
-	--shadow-light: rgba(0, 0, 0, 0.5);
+	--shadow-light: #00000080;
 	--text-light: #000;
-	--subtitle-light: rgb(75, 75, 75);
+	--subtitle-light: #4b4b4b;
 	--outline-light: #c8c8c8;
 }
